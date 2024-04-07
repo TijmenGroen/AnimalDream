@@ -1,0 +1,43 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+    font-weight: 600;
+    color: black;
+    font-size: 1.25rem;
+    line-height: 1.75rem
+}
+
+.navbar-start {
+    display: flex;
+    justify-content: start;
+    flex-basis: 100%;
+}
+
+.navbar-center {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 50%;
+}
+
+.navbar-end {
+    display: flex;
+    justify-content: end;
+    flex-basis: 100%;
+}
+
+.navbar-start:hover {
+    cursor: pointer;
+}
+
+.navbar-start > *,
+.navbar-center > *,
+.navbar-end > * {
+    transition: all 300ms ease-in-out;
+}
+
+.navbar-start > *:hover,
+.navbar-center > *:hover,
+.navbar-end > *:hover {
+    transform: scale(1.2);
+}
