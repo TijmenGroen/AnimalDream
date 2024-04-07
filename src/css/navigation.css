@@ -5,25 +5,47 @@
     font-weight: 600;
     color: black;
     font-size: 1.25rem;
-    line-height: 1.75rem
+    line-height: 1.75rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-top: 6px;
+    border-bottom: 6px;
+    border-top-color: #ed237a;
+    border-bottom-color: #2aaae2;
+    border-style: solid;
 }
 
 .navbar-start {
     display: flex;
     justify-content: start;
+    align-items: center;
     flex-basis: 100%;
+}
+
+.navbar-start > * {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
 }
 
 .navbar-center {
     display: flex;
     justify-content: space-between;
-    flex-basis: 50%;
+    flex-basis: 60%;
+    align-items: center;
+}
+
+.navbar-icon {
+    display: flex;
+    align-content: space-between;
+    align-items: center;
+    gap: 6px
 }
 
 .navbar-end {
     display: flex;
     justify-content: end;
     flex-basis: 100%;
+    align-items: center;
 }
 
 .navbar-start:hover {
