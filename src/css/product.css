@@ -1,0 +1,6 @@
+.productContainer {
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    width: 10%;
+}
