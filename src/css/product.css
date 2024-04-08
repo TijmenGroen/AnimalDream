@@ -1,10 +1,23 @@
+.productPage {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    flex-wrap: wrap;
+    margin-top: 64px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .productContainer {
-    width: 15%;
-    min-width: 232px;
+    width: 20%;
+    min-width: 252px;
     aspect-ratio: 0.78/1;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    margin-bottom: 128px;
+    margin-left: 3%;
+    margin-right: 3%;
 }
 
 .productBanner img {
@@ -38,19 +51,29 @@
 .productActionButtons {
     display: flex;
     justify-content: space-between;
-    margin-top: 8px;
+    margin-top: 18px;
 }
 
 .productActionButtons button {
     background-color: #121675;
     color: white;
     font-weight: 550;
-    font-size: 16px;
+    font-size: 18px;
     letter-spacing: 1px;
     border-radius: 32px;
     border: none;
     padding: 4px 16px 4px 16px;
     height: 50px;
+    box-shadow: 2px 4px 15px rgba(0, 0, 0, .5);
+    transition: background-color 100ms ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productActionButtons button:hover {
+    background-color: #0b0d42;
+    cursor: pointer;
 }
 
 .productActionButtons .favoriteButton {
