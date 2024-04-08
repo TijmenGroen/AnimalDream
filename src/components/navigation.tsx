@@ -1,4 +1,5 @@
-import Logo from "/assets/img/animaldreamlogo.png";
+import Text from "/assets/img/animaldreamtext.png";
+import Logo from "/assets/img/animaldream.png";
 import "../css/navigation.css"
 import { Compass, LibraryBig, LogIn, ShoppingCart } from "lucide-react";
 
@@ -7,8 +8,8 @@ function Navigation() {
     <div className="navbar">
       <div className="navbar-start">
         <a href="/">
-          <img src={Logo} alt="logo" style={{height: "5rem", float: "left", marginRight: "1rem"}}/>
-          <span>Animal Dream</span>
+          <img src={Logo} alt="logo" style={{height: "5rem", float: "left", marginRight: "1rem", transform: "translate(8px, 12px)"}}/>
+          <img src={Text} alt="logo" style={{height: "2rem", float: "left", marginRight: "1rem"}}/>
         </a>
       </div>
       <div className="navbar-center">
