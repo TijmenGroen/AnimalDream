@@ -1,7 +1,9 @@
 .carousel {
     height: 100%;
-    width: 100%;
+    width: 90%;
+    margin: auto;
     position: relative;
+    margin-top: 8px;
 }
 
 .carousel-slider {
@@ -9,6 +11,8 @@
     width: 100%;
     display: flex;
     overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 2px 2px 15px black
 }
 
 .carousel-button > *{

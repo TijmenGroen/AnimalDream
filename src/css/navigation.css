@@ -7,11 +7,7 @@
     font-size: 1.30rem;
     line-height: 2.25rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    border-top: 6px;
-    border-bottom: 6px;
-    border-top-color: #ed237a;
-    border-bottom-color: #2aaae2;
-    border-style: solid;
+    padding: 4px;
 }
 
 .navbar-start {
@@ -46,19 +42,18 @@
     justify-content: end;
     flex-basis: 100%;
     align-items: center;
+    padding-right: 4px;
 }
 
 .navbar-start:hover {
     cursor: pointer;
 }
 
-.navbar-start > *,
 .navbar-center > *,
 .navbar-end > * {
     transition: all 300ms ease-in-out;
 }
 
-.navbar-start > *:hover,
 .navbar-center > *:hover,
 .navbar-end > *:hover {
     transform: scale(1.2);
