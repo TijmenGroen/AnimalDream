@@ -45,13 +45,12 @@ function Carousel() {
           />
         ))}
       </div>
-      <button onClick={prevImg} className="carousel-button" style={{ left: 0 }}>
+      <button onClick={prevImg} className="carousel-button" style={{ left: 0, borderRadius: "16px 0 0 16px"}}>
         <ChevronsLeft />
       </button>
       <button
-        onClick={nextImg}
+        onClick={nextImg} style={{ right: 0, borderRadius: "0 16px 16px 0"}}
         className="carousel-button"
-        style={{ right: 0 }}
       >
         <ChevronsRight />
       </button>
