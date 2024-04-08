@@ -42,7 +42,7 @@
     justify-content: end;
     flex-basis: 100%;
     align-items: center;
-    padding-right: 4px;
+    margin-right: 4px;
 }
 
 .navbar-start:hover {

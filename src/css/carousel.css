@@ -21,6 +21,8 @@
 }
 
 .carousel-button {
+    background: none;
+    border: 0;
     position: absolute;
     top: 0;
     bottom: 0;
