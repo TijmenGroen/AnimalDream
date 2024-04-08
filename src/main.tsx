@@ -1,32 +1,25 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import Navigation from './components/navigation.tsx'
-import Carousel from './components/carousel.tsx'
-import About from './components/about.tsx'
-import ProductBody from './components/productBody.tsx'
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Index from "./pages";
+import ProductPage from "./pages/productPage";
 
-window.onload = () => {
-  console.log("loaded main")
-}
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Index />,
+  },
+  {
+    path: "/products",
+    element: <ProductPage />,
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById("navigation")!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Navigation />
-  </React.StrictMode>,
-)
-
-ReactDOM.createRoot(document.getElementById("carousel")!).render(
-    <Carousel />
-)
-
-ReactDOM.createRoot(document.getElementById("about")!).render(
-  <React.StrictMode>
-    <About />
-  </React.StrictMode>,
-)
-
-ReactDOM.createRoot(document.getElementById("productBody")!).render(
-  <React.StrictMode>
-    <ProductBody />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
