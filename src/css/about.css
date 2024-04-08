@@ -1,0 +1,38 @@
+.aboutBody {
+    width: 100%;
+    background-color: #E5ECE9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px;
+    /*
+    Brown: #b38259
+    Blue: #121675
+    */
+    box-shadow: -1px 2px 15px rgba(0, 0, 0, .2);
+}
+
+.aboutContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+    font-weight: 500;
+}
+
+.aboutContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 33.33%;
+}
+
+.aboutContent img {
+    width: 256px;
+}
