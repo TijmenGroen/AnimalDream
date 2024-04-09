@@ -31,6 +31,7 @@
 .productTitle {
     font-weight: 700;
     font-size: large;
+    margin-top: 4px;
     margin-bottom: 4px;
 }
 
@@ -48,22 +49,23 @@
     font-size: 90%;
 }
 
-.productActionButtons {
+.productActions {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 18px;
 }
 
-.productActionButtons button {
+.productActions button {
     background-color: #121675;
     color: white;
     font-weight: 550;
     font-size: 18px;
     letter-spacing: 1px;
-    border-radius: 32px;
+    border-radius: 20px;
     border: none;
-    padding: 4px 16px 4px 16px;
-    height: 50px;
+    padding: 0 16px 0 16px;
+    height: 44px;
     box-shadow: 2px 4px 15px rgba(0, 0, 0, .5);
     transition: background-color 100ms ease-in-out;
     display: flex;
@@ -71,12 +73,12 @@
     align-items: center;
 }
 
-.productActionButtons button:hover {
+.productActions button:hover {
     background-color: #0b0d42;
     cursor: pointer;
 }
 
-.productActionButtons .favoriteButton {
-    min-width: 50px;
-    padding: 0 !important;
+.productPrice {
+    font-weight: 600;
+    font-size: large;
 }

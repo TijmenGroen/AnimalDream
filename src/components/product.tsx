@@ -1,5 +1,5 @@
 import React from "react";
-import { Heart, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import "../css/product.css";
 import Placeholder from "/assets/img/placeholder.svg";
 
@@ -19,11 +19,9 @@ class Product extends React.Component {
           excepturi recusandae sed deserunt repudiandae impedit voluptates,
           nostrum similique quia alias quis voluptate, commodi consequatur!
         </div>
-        <div className="productActionButtons">
-          <button style={{ width: "70%" }}><ShoppingCart /><p style={{paddingTop: "4px", marginLeft: "4px"}}>Bestel</p></button>
-          <button className="favoriteButton">
-            <Heart />
-          </button>
+        <div className="productActions">
+          <p className="productPrice">€555,55,-</p>
+          <button style={{ width: "55%"}}><ShoppingCart /><p style={{paddingTop: "4px", marginLeft: "4px"}}>Bestel</p></button>
         </div>
       </div>
     );
