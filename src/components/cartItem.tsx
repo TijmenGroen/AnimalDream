@@ -7,7 +7,7 @@ class CartItem extends React.Component {
   render() {
     return (
       <div className="cartItem">
-        <div style={{display: "flex", width: "60%"}}>
+        <div style={{display: "flex"}}>
             <div className="cartItemImg">
               <img src={Placeholder} alt="productBanner" />
             </div>
