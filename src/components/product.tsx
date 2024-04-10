@@ -20,7 +20,7 @@ class Product extends React.Component {
           nostrum similique quia alias quis voluptate, commodi consequatur!
         </div>
         <div className="productActions">
-          <p className="productPrice">€555,55,-</p>
+          <p className="productPrice">€ 555,55</p>
           <button style={{ width: "55%"}}><ShoppingCart /><p style={{paddingTop: "4px", marginLeft: "4px"}}>Bestel</p></button>
         </div>
       </div>

@@ -15,7 +15,7 @@ function Navigation() {
       </div>
       <div className="navbar-center">
         <Link to="/products"><div className="navbar-icon">Products<Compass size={18}/></div></Link>
-        <Link to="/"><div className="navbar-icon">Cart<ShoppingCart size={18}/></div></Link>
+        <Link to="/cart"><div className="navbar-icon">Cart<ShoppingCart size={18}/></div></Link>
         <Link to="/"><div className="navbar-icon">About<LibraryBig size={18}/></div></Link>
       </div>
       <div className="navbar-end">
