@@ -9,12 +9,12 @@ import Navigation from "./components/navigation";
 import CartPage from "./pages/cartPage";
 import { LogInPage } from "./pages/LogInRegisterPage";
 import { RegisterPage } from "./pages/LogInRegisterPage";
+import Footer from "./components/footer";
 
 function App() {
   return (
     <>
     <BrowserRouter>
-      <div>
         <Navigation />
         <Routes>
           <Route path="/" element={<Index />} />
@@ -23,7 +23,7 @@ function App() {
           <Route path="/login" element={<LogInPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Routes>
-      </div>
+        <Footer />
     </BrowserRouter>
     </>
   );
