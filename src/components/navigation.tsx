@@ -19,7 +19,7 @@ function Navigation() {
         <Link to="/"><div className="navbar-icon">About<LibraryBig size={18}/></div></Link>
       </div>
       <div className="navbar-end">
-        <Link to="/"><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>
+        <Link to="/login"><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>
       </div>
     </div>
   );

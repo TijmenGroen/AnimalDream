@@ -14,7 +14,7 @@
     width: 30%;
     min-width: 230px;
     padding: 8px;
-    box-shadow: -4px -4px 15px rgba(0, 0, 0, .05);
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, .05), -4px -4px 5px rgba(0, 0, 0, .05);
 }
 
 .cartTotalHead {
@@ -40,7 +40,6 @@
 .cartTotalBody button {
     border: none;
     width: 90%;
-    cursor: pointer;
     background-color: #121675;
     color: #ffffff;
     font-size: large;
@@ -52,6 +51,12 @@
     border-radius: 8px;
     align-self: center;
     box-shadow: 2px 2px 15px rgba(0, 0, 0, .05);
+    transition: background-color 100ms ease-in-out;
+}
+
+.cartTotalBody button:hover {
+    cursor: pointer;
+    background-color: #0b0d42;
 }
 
 .cartItemsBox {
@@ -63,7 +68,7 @@
     width: 60%;
     min-width: 400px;
     justify-content: center;
-    box-shadow: -4px -4px 15px rgba(0, 0, 0, .05);
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, .05), -4px -4px 5px rgba(0, 0, 0, .05);
 }
 
 .cartItem {

@@ -1,0 +1,79 @@
+.logInRegisterPage {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 60%;
+}
+
+.logInRegisterBox {
+    margin-top: 64px;
+    width: 100%;
+    max-width: 600px;
+    background-color: #F5F3F5;
+    border-radius: 4px;
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, .05), -4px -4px 5px rgba(0, 0, 0, .05);
+}
+
+.logInRegisterBody {
+    padding: 48px;
+}
+
+.logInRegisterHead {
+    font-size: 38px;
+    font-weight: 600;
+    margin-bottom: 48px;
+}
+
+.logInRegisterContent {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+.logInRegisterCredentialField {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.logInRegisterCredentialField label {
+    transition: all 200ms ease-in-out;
+    transform: translate(8px, 32px);
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.logInRegisterCredentialField input:not(:placeholder-shown) + label,
+.logInRegisterCredentialField input:focus + label {
+    transform: translate(0, 0);
+    color: black;
+}
+
+.logInRegisterCredentialField > input {
+    border-radius: 4px;
+    height: 42px;
+    font-size: larger;
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+}
+
+.logInRegisterActionButtons {
+    margin-top: 48px;
+}
+
+.logInRegisterActionButtons button {
+    background-color: #121675;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    padding: 12px;
+    color: white;
+    font-size: larger;
+    font-weight: 600;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, .05);
+    transition: background-color 100ms ease-in-out;
+}
+
+.logInRegisterActionButtons button:hover {
+    cursor: pointer;
+    background-color: #0b0d42;
+}
