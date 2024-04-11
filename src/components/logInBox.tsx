@@ -13,8 +13,8 @@ function LogInBox() {
                     <input type="text" name="logInMailUserName" id="logInMailUserName" placeholder=""/>
                     <label htmlFor="logInMailUserName">Gebruikersnaam</label>
                 </div>
-                <div className="logInRegisterCredentialField">
-                    <input type="text" name="logInPassword" id="logInPassword" placeholder=""/>
+                <div className="logInRegisterCredentialField" style={{marginTop: "24px"}}>
+                    <input type="password" name="logInPassword" id="logInPassword" placeholder=""/>
                     <label htmlFor="logInPassword">Wachtwoord</label>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import "../css/logInRegister.css";
 import LogInBox from "../components/logInBox";
+import RegisterBox from "../components/registerbox";
 
 export function LogInPage() {
   return (
@@ -12,7 +13,7 @@ export function LogInPage() {
 export function RegisterPage() {
   return (
     <div className="logInRegisterPage">
-      <LogInBox />
+      <RegisterBox />
     </div>
   );
 }

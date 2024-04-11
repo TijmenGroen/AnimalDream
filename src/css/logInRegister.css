@@ -8,6 +8,7 @@
 .logInRegisterBox {
     margin-top: 64px;
     width: 100%;
+    min-width: 380px;
     max-width: 600px;
     background-color: #F5F3F5;
     border-radius: 4px;
@@ -21,13 +22,13 @@
 .logInRegisterHead {
     font-size: 38px;
     font-weight: 600;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
 }
 
 .logInRegisterContent {
     display: flex;
     flex-direction: column;
-    gap: 64px;
+    gap: 12px;
 }
 
 .logInRegisterCredentialField {
@@ -39,10 +40,13 @@
     transition: all 200ms ease-in-out;
     transform: translate(8px, 32px);
     color: rgba(0, 0, 0, 0.5);
+    cursor: text;
+    pointer-events: none;
 }
 
 .logInRegisterCredentialField input:not(:placeholder-shown) + label,
 .logInRegisterCredentialField input:focus + label {
+    cursor: default;
     transform: translate(0, 0);
     color: black;
 }
@@ -50,7 +54,7 @@
 .logInRegisterCredentialField > input {
     border-radius: 4px;
     height: 42px;
-    font-size: larger;
+    font-size: large;
     border: 1px;
     border-color: black;
     border-style: solid;
