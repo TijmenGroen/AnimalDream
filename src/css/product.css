@@ -9,15 +9,17 @@
 }
 
 .productContainer {
-    width: 20%;
     min-width: 252px;
+    max-width: 400px;
     aspect-ratio: 0.78/1;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    flex-basis: 20%;
+    flex-grow: 1;
     margin-bottom: 128px;
-    margin-left: 3%;
-    margin-right: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .productBanner img {

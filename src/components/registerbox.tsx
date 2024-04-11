@@ -34,11 +34,11 @@ function RegisterBox() {
                     <label htmlFor="logInRepeat">Herhaal wachtwoord</label>
                 </div>
             </div>
-            <Link to="/login" style={{color: "#0075ff", textDecoration: "underline", marginTop: "4px"}}>Al een account? Log in</Link>
             <div className="logInRegisterActionButtons">
                 <button>
                     Maak account
                 </button>
+                <Link to="/login" >Al een account? <span style={{color: "#0075ff", textDecoration: "underline", marginTop: "4px"}}>Log in</span></Link>
             </div>
         </div>
     </div>

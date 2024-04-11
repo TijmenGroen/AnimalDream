@@ -5,16 +5,18 @@
     margin: auto;
     margin-top: 32px;
     gap: 32px;
+    flex-wrap: wrap;
 }
 
 .cartTotalBox {
     border-radius: 4px;
     background-color: #F5F3F5;
     height: fit-content;
-    width: 30%;
     min-width: 230px;
     padding: 8px;
     box-shadow: 4px 4px 5px rgba(0, 0, 0, .05), -4px -4px 5px rgba(0, 0, 0, .05);
+    flex-basis: 20%;
+    flex-grow: 1;
 }
 
 .cartTotalHead {
@@ -69,6 +71,7 @@
     min-width: 400px;
     justify-content: center;
     box-shadow: 4px 4px 5px rgba(0, 0, 0, .05), -4px -4px 5px rgba(0, 0, 0, .05);
+    flex-grow: 1;
 }
 
 .cartItem {
