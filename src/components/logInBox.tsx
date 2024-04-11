@@ -18,12 +18,12 @@ function LogInBox() {
                     <label htmlFor="logInPassword">Wachtwoord</label>
                 </div>
             </div>
-            <Link to="/forgotPassword" style={{color: "#0075ff", textDecoration: "underline", marginTop: "4px", textAlign: "center"}}>Wachtwoord vergeten?</Link>
+            <Link to="/forgotPassword" style={{color: "#0075ff", marginTop: "4px", textAlign: "center"}}>Wachtwoord vergeten?</Link>
             <div className="logInRegisterActionButtons">
                 <button>
                     Log In
                 </button>
-                <Link to="/register">Nog geen account? <span style={{color: "#0075ff", textDecoration: "underline", marginTop: "4px", textAlign: "center"}}>Maak account</span></Link>
+                <p>Nog geen account? <Link to="/register"><span style={{color: "#0075ff", marginTop: "4px", textAlign: "center"}}>Maak account</span></Link></p>
             </div>
         </div>
     </div>
