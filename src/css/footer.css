@@ -8,6 +8,7 @@
     background-color: #121675;
     color: white;
     box-shadow: -4px 0 15px rgba(0, 0, 0, .2);
+    bottom: 0;
 }
 
 .footerContent {
