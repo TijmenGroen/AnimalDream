@@ -38,7 +38,7 @@ function RegisterBox() {
                 <button>
                     Maak account
                 </button>
-                <p>Al een account? <Link to="/login" ><span style={{color: "#0075ff", marginTop: "4px"}}>Log in</span></Link></p>
+                <p>Al een account? <Link to="/login" ><span className="logInRegisterLinks">Log in</span></Link></p>
             </div>
         </div>
     </div>

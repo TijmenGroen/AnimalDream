@@ -2,6 +2,7 @@ import React from "react";
 import "../css/cart.css";
 import Placeholder from "/assets/img/placeholder.svg";
 import { Heart, Trash2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 class CartItem extends React.Component {
   render() {
@@ -12,7 +13,7 @@ class CartItem extends React.Component {
               <img src={Placeholder} alt="productBanner" />
             </div>
             <div className="cartItemBody">
-              <div className="cartItemHead">Hondenlijn - 8m</div>
+              <Link to="/products"><div className="cartItemHead">Hondenlijn - 8m</div></Link>
               <div className="cartItemAmount">
                 <select className="cartItemAmountSelect" name="amount" id="">
                   <option value="1">1</option>

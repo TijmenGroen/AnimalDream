@@ -85,3 +85,11 @@
     cursor: pointer;
     background-color: #0b0d42;
 }
+
+.logInRegisterLinks {
+    color: #0075ff;
+}
+
+.logInRegisterLinks:hover {
+    text-decoration: underline;
+}
