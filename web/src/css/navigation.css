@@ -21,7 +21,12 @@
 .navbar-start > * {
     display: flex;
     align-items: center;
-    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 936px) {
+    .logo-text img {
+        display: none;
+    }
 }
 
 .navbar-center {
@@ -29,6 +34,7 @@
     justify-content: space-between;
     flex-basis: 60%;
     align-items: center;
+    min-width: 312px;
 }
 
 .navbar-icon {
@@ -58,4 +64,71 @@
 .navbar-center > *:hover,
 .navbar-end > *:hover {
     transform: scale(1.2);
+}
+
+@media screen and (max-width:636px) {
+    .navbar {
+        display: none;
+    }
+    .navbar-small {
+        display: flex !important;
+    }
+    .navbar-small-spacing {
+        display: block !important;
+    }
+}
+
+.navbar-small {
+    display: none;
+    width: 100%;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 2rem;
+    font-weight: 600;
+    color: black;
+    font-size: 1.30rem;
+    line-height: 3rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #e9e9e9;
+    border-radius: 16px;
+    z-index: 99;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 300ms ease-in-out;
+}
+
+.navbar-small-spacing {
+    display: none;
+    width: 100%;
+    background: none;
+    height: 120px;
+}
+
+.navbar-small-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar-small-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-small-logo > * {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-small-toggle {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-small-toggle button {
+    border: none;
+    background: #e9e9e9;
+    cursor: pointer;
 }

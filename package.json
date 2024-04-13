@@ -12,7 +12,7 @@
     "/server"
   ],
   "scripts": {
-    "dev": "run-s dev:server dev:web",
+    "dev": "run-p dev:server dev:web",
     "dev:server": "npm run dev -w ./server",
     "dev:web": "npm run dev -w ./web",
     "build": "run-s build:web build:server",
