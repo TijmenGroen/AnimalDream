@@ -14,7 +14,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: resolve(__dirname, "../dist"),
+    outDir: resolve(__dirname, "../dist/web"),
     emptyOutDir: true,
   },
   esbuild: {
