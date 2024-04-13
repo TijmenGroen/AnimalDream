@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false ./index.ts",
+    "build": "tsc --noEmit && tsx ./esbuild.config.mts build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "esbuild": "^0.20.2",
+    "esbuild-plugin-eslint": "^0.3.12",
+    "eslint": "^9.0.0",
+    "express": "^4.19.2",
+    "tsx": "^4.7.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.4.5"
+  }
+}
