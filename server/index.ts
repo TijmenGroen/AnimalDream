@@ -15,10 +15,10 @@ app.listen(port, () => {
 });
 
 
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
     res.send("thiti").status(204)
 })
 
-import testRouter from "./routes/test";
+import testRouter from "./routes";
 
 app.use("/apptest", testRouter)
