@@ -1,12 +1,15 @@
 import express, { Express } from "express";
 import { config } from "dotenv";
 import cors from "cors";
+import router from "./routes";
+
 export const app: Express = express();
 
 config();
 
 app.use(cors());
 app.use(express.json());
+app.use("/", router);
 
 const port: number = (process.env.PORT || 8080) as number;
 
@@ -18,7 +21,3 @@ app.listen(port, () => {
 app.get("/", (_req, res) => {
     res.send("thiti").status(204)
 })
-
-import testRouter from "./routes";
-
-app.use("/apptest", testRouter)

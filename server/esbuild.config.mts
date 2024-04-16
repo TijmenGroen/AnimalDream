@@ -2,7 +2,7 @@ import * as esbuild from 'esbuild'
 import eslint from "esbuild-plugin-eslint";
 
 const settings: esbuild.BuildOptions = {
-    entryPoints: ["./index.ts"],
+    entryPoints: ["./src/index.ts"],
     outfile: "../dist/server/index.js",
     bundle: true,
     minify: true,

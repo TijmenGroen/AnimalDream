@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "tsx watch --clear-screen=false ./index.ts",
+    "dev": "tsx watch --clear-screen=false ./src/index.ts",
     "build": "tsc --noEmit && tsx ./esbuild.config.mts build"
   },
   "keywords": [],
@@ -17,10 +17,14 @@
     "tsx": "^4.7.2"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2",
     "typescript": "^5.4.5"
   }
 }
