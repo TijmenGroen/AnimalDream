@@ -2,9 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "dev": "tsx watch --clear-screen=false ./src/index.ts",
-    "build": "tsc --noEmit && tsx ./esbuild.config.mts build"
+    "build": "tsc --noEmit && tsx ./esbuild.config.mts build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "keywords": [],
   "author": "",
@@ -12,7 +14,6 @@
   "dependencies": {
     "esbuild": "^0.20.2",
     "esbuild-plugin-eslint": "^0.3.12",
-    "eslint": "^9.0.0",
     "express": "^4.19.2",
     "mysql2": "^3.9.5",
     "tsx": "^4.7.2"
@@ -22,15 +23,15 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.6",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "jsonwebtoken": "^9.0.2",
-    "typescript": "^5.4.5",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0"
+    "jsonwebtoken": "^9.0.2",
+    "typescript": "^5.4.5"
   }
 }

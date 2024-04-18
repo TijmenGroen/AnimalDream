@@ -6,7 +6,7 @@ const headers: { "Content-Type": string } = {
 
 export class userService {
     public async register(formData: registerFormModal): Promise<boolean> {
-        const response = await fetch(`http://localhost:3001/users/register`, {
+        const response: Response = await fetch(`http://localhost:3001/users/register`, {
             method: "post",
             headers: headers,
             body: JSON.stringify(formData)
@@ -19,3 +19,5 @@ export class userService {
         return true
     }
 }
+
+const geeky  = ""
