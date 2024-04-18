@@ -11,7 +11,7 @@ async function submitRegisterForm(
 ): Promise<void> {
     const _userService: userService = new userService();
 
-  const result = await _userService.register({
+  const result: boolean = await _userService.register({
     firstname: firstnameValue,
     lastname: lastnameValue,
     email: emailValue,
@@ -21,7 +21,7 @@ async function submitRegisterForm(
   console.log(result)
 }
 
-function RegisterBox() {
+function RegisterBox(): JSX.Element {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [mail, setMail] = useState("");
@@ -38,7 +38,7 @@ function RegisterBox() {
               name="logInFirstName"
               id="logInFirstName"
               placeholder=""
-              onChange={(e) => setFirstname(e.target.value)}
+              onChange={(e: any) => setFirstname(e.target.value)}
             />
             <label htmlFor="logInFirstName">Voornaam</label>
           </div>
@@ -48,7 +48,7 @@ function RegisterBox() {
               name="logInLastName"
               id="logInLastName"
               placeholder=""
-              onChange={(e) => setLastname(e.target.value)}
+              onChange={(e: any) => setLastname(e.target.value)}
             />
             <label htmlFor="logInLastName">Achternaam</label>
           </div>
@@ -58,7 +58,7 @@ function RegisterBox() {
               name="logInMail"
               id="logInMail"
               placeholder=""
-              onChange={(e) => setMail(e.target.value)}
+              onChange={(e: any) => setMail(e.target.value)}
             />
             <label htmlFor="logInMail">E-mail</label>
           </div>
@@ -68,7 +68,7 @@ function RegisterBox() {
               name="logInPassword"
               id="logInPassword"
               placeholder=""
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: any) => setPassword(e.target.value)}
             />
             <label htmlFor="logInPassword">Wachtwoord</label>
           </div>

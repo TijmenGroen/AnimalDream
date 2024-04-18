@@ -9,7 +9,7 @@ export class UserController {
             const result: ResultSetHeader = await queryDatabase(connection,
                 `
                 INSERT INTO user
-                VALUES (2, ?)
+                VALUES (DEFAULT, ?)
                 `,
                 [req.body.firstname, req.body.lastname, req.body.email, req.body.password]
             )
