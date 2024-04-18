@@ -22,6 +22,12 @@ export async function queryDatabase<T = any>(
     query: string,
     ...values: any[]
 ): Promise<T> {
+    try{
         const queryResult: any = await connection.query(query, values);
         return queryResult[0] as T;
+    }
+    catch(error){
+        connection.destroy()
+        throw error;
+    }
 }

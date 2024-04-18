@@ -1,19 +1,20 @@
 import { Request, Response } from "express";
 import { getConnection, queryDatabase } from "../databaseConfig";
-import { PoolConnection } from "mysql2/promise";
+import { PoolConnection, ResultSetHeader } from "mysql2/promise";
 
 export class UserController {
     public async register(req: Request, res: Response): Promise<void> {
         const connection: PoolConnection = await getConnection()
         try{
-            await queryDatabase(connection,
+            const result: ResultSetHeader = await queryDatabase(connection,
                 `
                 INSERT INTO user
-                VALUES (DEFAULT, ?)
+                VALUES (2, ?)
                 `,
                 [req.body.firstname, req.body.lastname, req.body.email, req.body.password]
             )
             res.status(200).send("blaap");
+            console.log(result)
             connection.release()
         }
         catch(err){

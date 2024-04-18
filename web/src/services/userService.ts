@@ -19,5 +19,3 @@ export class userService {
         return true
     }
 }
-
-const geeky  = ""
