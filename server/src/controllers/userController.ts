@@ -1,28 +1,25 @@
 import { Request, Response } from "express";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import { getConnection, queryDatabase } from "../databaseConfig";
-import { Connection, PoolConnection, ResultSetHeader } from "mysql2/promise";
+import { PoolConnection } from "mysql2/promise";
 
 export class UserController {
     public async register(req: Request, res: Response): Promise<void> {
         const connection: PoolConnection = await getConnection()
         try{
-            const data: ResultSetHeader = await queryDatabase(connection,
+            await queryDatabase(connection,
                 `
                 INSERT INTO user
-                VALUES (DEFAULT, ?, ?, ?, ?)
+                VALUES (DEFAULT, ?)
                 `,
                 [req.body.firstname, req.body.lastname, req.body.email, req.body.password]
             )
             res.status(200).send("blaap");
+            connection.release()
         }
         catch(err){
             res.sendStatus(400);
+            connection.release()
             throw err;
-        }
-        finally{
-            connection.end();
         }
     }
 }

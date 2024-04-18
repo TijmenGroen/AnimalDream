@@ -30,5 +30,3 @@ export async function queryDatabase<T = any>(
         throw err;
     }
 }
-
-const hi = "geeky"
