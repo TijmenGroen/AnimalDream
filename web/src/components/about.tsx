@@ -1,7 +1,7 @@
 import "../css/about.css";
 import Placeholder from "/assets/img/placeholder.svg";
 
-function About() {
+function About(): JSX.Element {
   return (
     <div className="aboutBody">
       <h1>Lorem Ipsum</h1>

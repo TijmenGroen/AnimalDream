@@ -6,7 +6,7 @@ import Park3 from "/assets/img/park3.png";
 import Park4 from "/assets/img/park4.png";
 import { useState } from "react";
 
-function Carousel() {
+function Carousel(): JSX.Element {
   const imgUrls: string[] = [Park1, Park2, Park3, Park4];
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -14,10 +14,10 @@ function Carousel() {
     autoSlider;
   });
 
-  const autoSlider = setTimeout(nextImg, 7000);
+  const autoSlider: NodeJS.Timeout = setTimeout(nextImg, 7000);
 
-  function nextImg() {
-    setImageIndex((index) => {
+  function nextImg():void {
+    setImageIndex((index: number) => {
       if (index === imgUrls.length - 1) return 0;
       return index + 1;
     });
@@ -25,8 +25,8 @@ function Carousel() {
     autoSlider
   }
 
-  function prevImg() {
-    setImageIndex((index) => {
+  function prevImg(): void {
+    setImageIndex((index: number) => {
       if (index === 0) return imgUrls.length - 1;
       return index - 1;
     });
@@ -37,7 +37,7 @@ function Carousel() {
   return (
     <div className="carousel">
       <div className="carousel-slider">
-        {imgUrls.map((url) => (
+        {imgUrls.map((url: string) => (
           <img
             key={url}
             src={url}

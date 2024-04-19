@@ -6,12 +6,12 @@ import { Compass, LibraryBig, LogIn, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function Navigation() {
+function Navigation(): JSX.Element {
   const [navBarSmallToggled, setNavBarSmallToggled] = useState(false);
   const [navBarSmallOffset, setNavBarSmallOffset] = useState("-22rem");
   const [navBarSmallButtonRotation, setNavBarSmallButtonRotation] = useState("0deg");
 
-  function toggleNavbarSmall() {
+  function toggleNavbarSmall(): void {
     if(navBarSmallToggled === false){
       setNavBarSmallToggled(true);
       setNavBarSmallOffset("-120px");

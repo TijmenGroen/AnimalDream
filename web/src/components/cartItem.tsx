@@ -5,7 +5,7 @@ import { Heart, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 class CartItem extends React.Component {
-  render() {
+  public render(): JSX.Element {
     return (
       <div className="cartItem">
         <div style={{display: "flex"}}>

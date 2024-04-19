@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../css/logInRegister.css";
 
-function LogInBox() {
+function LogInBox(): JSX.Element {
   return (
     <div className="logInRegisterBox">
         <div className="logInRegisterBody">

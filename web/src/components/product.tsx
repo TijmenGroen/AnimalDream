@@ -4,7 +4,7 @@ import "../css/product.css";
 import Placeholder from "/assets/img/placeholder.svg";
 
 class Product extends React.Component {
-  render() {
+  public render(): JSX.Element {
     return (
       <div className="productContainer">
         <div className="productBanner">

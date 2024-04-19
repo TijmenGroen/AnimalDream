@@ -1,4 +1,4 @@
-import express, { Express } from "express";
+import express, { Express, Request, Response } from "express";
 import { config } from "dotenv";
 import cors from "cors";
 import router from "./routes";
@@ -18,6 +18,6 @@ app.listen(port, () => {
 });
 
 
-app.get("/", (_req, res) => {
+app.get("/", (_req: Request, res: Response) => {
     res.send("thiti").status(204)
 })
