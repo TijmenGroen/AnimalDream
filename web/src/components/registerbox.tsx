@@ -22,9 +22,13 @@ async function submitRegisterForm(
 }
 
 function RegisterBox(): JSX.Element {
+  // eslint-disable-next-line @typescript-eslint/typedef
   const [firstname, setFirstname] = useState("");
+  // eslint-disable-next-line @typescript-eslint/typedef
   const [lastname, setLastname] = useState("");
+  // eslint-disable-next-line @typescript-eslint/typedef
   const [mail, setMail] = useState("");
+  // eslint-disable-next-line @typescript-eslint/typedef
   const [password, setPassword] = useState("");
 
   return (

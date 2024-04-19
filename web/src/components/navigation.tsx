@@ -7,8 +7,11 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function Navigation(): JSX.Element {
+  // eslint-disable-next-line @typescript-eslint/typedef
   const [navBarSmallToggled, setNavBarSmallToggled] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/typedef
   const [navBarSmallOffset, setNavBarSmallOffset] = useState("-22rem");
+  // eslint-disable-next-line @typescript-eslint/typedef
   const [navBarSmallButtonRotation, setNavBarSmallButtonRotation] = useState("0deg");
 
   function toggleNavbarSmall(): void {

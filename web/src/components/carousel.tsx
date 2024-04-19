@@ -8,6 +8,7 @@ import { useState } from "react";
 
 function Carousel(): JSX.Element {
   const imgUrls: string[] = [Park1, Park2, Park3, Park4];
+  // eslint-disable-next-line @typescript-eslint/typedef
   const [imageIndex, setImageIndex] = useState(0);
 
   window.addEventListener("load", () => {
