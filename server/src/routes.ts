@@ -6,7 +6,7 @@ import { ProductController } from "./controllers/productController";
 const router: Router = Router();
 
 const productController: ProductController = new ProductController();
-router.post("/products/getAll", (req: Request, res: Response) => productController.getProducts(req, res));
+router.get("/products/getAll", (req: Request, res: Response) => productController.getProducts(req, res));
 
 const userController: UserController = new UserController();
 router.post("/users/register", (req: Request, res: Response) => userController.register(req, res));

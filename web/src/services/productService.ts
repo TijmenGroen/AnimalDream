@@ -1,21 +1,20 @@
-import registerFormModal from "@shared/formModels/registerFormModel"
+import Product from "../components/product";
 
 const headers: { "Content-Type": string } = {
     "Content-Type": "application/json",
 };
 
-export class userService {
-    public async getProducts(formData: registerFormModal): Promise<boolean> {
-        const response: Response = await fetch(`${import.meta.env.VITE_API_URL}/products/getALl`, {
-            method: "post",
-            headers: headers,
-            body: JSON.stringify(formData)
+export class ProductService {
+    public async getProducts(): Promise<Product[]> {
+        const response: Response = await fetch(`${import.meta.env.VITE_API_URL}products/getAll`, {
+            method: "get",
+            headers: headers
         });
 
         if(!response.ok){
             console.error(response)
-            return false
+            return []
         }
-        return true
+        return (await response.json()) as Product[];
     }
 }

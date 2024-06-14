@@ -11,7 +11,7 @@ import { LogInPage } from "./pages/LogInRegisterPage";
 import { RegisterPage } from "./pages/LogInRegisterPage";
 import Footer from "./components/footer";
 
-function App() {
+function App(): JSX.Element {
   return (
     <>
     <BrowserRouter>

@@ -11,14 +11,12 @@ async function submitRegisterForm(
 ): Promise<void> {
     const _userService: userService = new userService();
 
-  const result: boolean = await _userService.register({
+  await _userService.register({
     firstname: firstnameValue,
     lastname: lastnameValue,
     email: emailValue,
     password: passwordValue,
   });
-
-  console.log(result)
 }
 
 function RegisterBox(): JSX.Element {
