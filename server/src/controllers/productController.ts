@@ -1,18 +1,19 @@
 import { Request, Response } from "express";
 import { getConnection, queryDatabase } from "../databaseConfig";
-import { PoolConnection } from "mysql2/promise";
+import { PoolConnection, ResultSetHeader } from "mysql2/promise";
 
-export class UserController {
-    public async register(req: Request, res: Response): Promise<void> {
+export class ProductController {
+    public async getProducts(req: Request, res: Response): Promise<void> {
         const connection: PoolConnection = await getConnection()
         try{
-            await queryDatabase(connection,
+            const result: ResultSetHeader = await queryDatabase(connection,
                 `
-                INSERT INTO user
-                VALUES (DEFAULT, ?)
+               SELECT *
+               FROM product
                 `,
-                [req.body.firstname, req.body.lastname, req.body.email, req.body.password]
+                []
             )
+            console.log(result);
             res.status(200);
             connection.release()
         }

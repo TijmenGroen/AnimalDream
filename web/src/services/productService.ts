@@ -5,8 +5,8 @@ const headers: { "Content-Type": string } = {
 };
 
 export class userService {
-    public async register(formData: registerFormModal): Promise<boolean> {
-        const response: Response = await fetch(`${import.meta.env.VITE_API_URL}users/register`, {
+    public async getProducts(formData: registerFormModal): Promise<boolean> {
+        const response: Response = await fetch(`${import.meta.env.VITE_API_URL}/products/getALl`, {
             method: "post",
             headers: headers,
             body: JSON.stringify(formData)
