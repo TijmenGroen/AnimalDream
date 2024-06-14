@@ -25,13 +25,14 @@ export class ProductController {
     }
     private pushProductsToArray(query: any): Product[] {
         const ProductsArray: Product[] = []
-        ProductsArray.forEach(() => {
+        for(let i: number = 0; i < query.length; i++){
             ProductsArray.push({
-                name: query.name,
-                description: query.description,
-                price: query.price
+                id: query[i].productId,
+                name: query[i].productName,
+                description: query[i].productDescription,
+                price: query[i].productPrice
             })
-        });
+        }
         return ProductsArray
     }
 }

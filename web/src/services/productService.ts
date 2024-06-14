@@ -1,4 +1,4 @@
-import Product from "../components/product";
+import { Product } from "../../../shared/types/product"
 
 const headers: { "Content-Type": string } = {
     "Content-Type": "application/json",

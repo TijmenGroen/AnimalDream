@@ -3,29 +3,25 @@ import { ShoppingCart } from "lucide-react";
 import "../css/product.css";
 import Placeholder from "/assets/img/placeholder.svg";
 
-class Product extends React.Component {
-  public render(): JSX.Element {
-    return (
+function ProductContainer(props: {name?: string, description?: string, price?: number}): JSX.Element {
+  return (
       <div className="productContainer">
         <div className="productBanner">
           <img src={Placeholder} alt="productBanner" />
         </div>
         <div className="productTitle">
-          Hondenlijn - 8m
+          {props.name}
           <hr />
         </div>
         <div className="productDescription">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam
-          excepturi recusandae sed deserunt repudiandae impedit voluptates,
-          nostrum similique quia alias quis voluptate, commodi consequatur!
+          {props.description}
         </div>
         <div className="productActions">
-          <p className="productPrice">€ 555,55</p>
+          <p className="productPrice">€ {props.price}</p>
           <button style={{ width: "55%"}}><ShoppingCart /><p style={{paddingTop: "4px", marginLeft: "4px"}}>Bestel</p></button>
         </div>
       </div>
     );
-  }
 }
 
-export default Product;
+export default ProductContainer;
