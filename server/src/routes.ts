@@ -10,5 +10,6 @@ router.get("/products/getAll", (req: Request, res: Response) => productControlle
 
 const userController: UserController = new UserController();
 router.post("/users/register", (req: Request, res: Response) => userController.register(req, res));
+router.post("/users/login", (req: Request, res: Response) => userController.logIn(req, res));
 
 export default router;

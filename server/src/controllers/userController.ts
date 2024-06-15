@@ -22,4 +22,28 @@ export class UserController {
             throw err;
         }
     }
+
+    public async logIn(req: Request, res: Response): Promise<void> {
+        const connection: PoolConnection = await getConnection()
+        try{
+            const result: any = await queryDatabase(connection,
+                `
+                SELECT *
+                FROM user
+                WHERE email = ?
+                AND password = ?
+                `,
+                [req.body.email], [req.body.password]
+            )
+            if(result.length === 1)res.status(200).json(result)
+            else if(result.length < 1)res.status(401).send("No user found")
+            else res.sendStatus(500)
+            connection.release()
+        }
+        catch(err){
+            res.sendStatus(400);
+            connection.release()
+            throw err;
+        }
+    }
 }

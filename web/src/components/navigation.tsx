@@ -54,7 +54,7 @@ function Navigation(): JSX.Element {
           <Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>
         </div>
         <div className="navbar-small-logo">
-            <Link to="/">
+            <Link to="/" onClick={toggleNavbarSmall}>
               <img src={Logo} alt="logo" style={{height: "5rem", float: "left", marginRight: "1rem", transform: "translate(8px, 12px)"}}/>
               <img src={Text} alt="logo-text" style={{height: "2rem", float: "left", marginRight: "1rem"}}/>
             </Link>

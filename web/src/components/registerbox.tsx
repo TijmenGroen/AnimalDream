@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import "../css/logInRegister.css";
-import { userService } from "../services/userService";
+import { UserService } from "../services/userService";
 import { useState } from "react";
 
 async function submitRegisterForm(
@@ -9,7 +9,7 @@ async function submitRegisterForm(
   emailValue: string,
   passwordValue: string
 ): Promise<void> {
-    const _userService: userService = new userService();
+  const _userService: UserService = new UserService();
 
   await _userService.register({
     firstname: firstnameValue,
@@ -28,6 +28,8 @@ function RegisterBox(): JSX.Element {
   const [mail, setMail] = useState("");
   // eslint-disable-next-line @typescript-eslint/typedef
   const [password, setPassword] = useState("");
+
+  const navigate: NavigateFunction = useNavigate();
 
   return (
     <div className="logInRegisterBox">
@@ -86,7 +88,10 @@ function RegisterBox(): JSX.Element {
         </div>
         <div className="logInRegisterActionButtons">
           <button
-            onClick={() => {submitRegisterForm(firstname, lastname, mail, password)}}
+            onClick={() => {
+              submitRegisterForm(firstname, lastname, mail, password);
+              navigate("/")
+            }}
           >
             Maak account
           </button>
