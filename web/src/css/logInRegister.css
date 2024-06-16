@@ -61,7 +61,7 @@
 }
 
 .logInRegisterActionButtons {
-    margin-top: 48px;
+    margin-top: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,4 +92,10 @@
 
 .logInRegisterLinks:hover {
     text-decoration: underline;
+}
+
+.announcement {
+    margin-bottom: 12px;
+    color: #cc0000;
+    text-align: center;
 }

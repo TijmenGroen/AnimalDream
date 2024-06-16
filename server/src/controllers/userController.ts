@@ -36,7 +36,7 @@ export class UserController {
                 [req.body.email], [req.body.password]
             )
             if(result.length === 1)res.status(200).json(result)
-            else if(result.length < 1)res.status(401).send("No user found")
+            else if(result.length < 1)res.sendStatus(204)
             else res.sendStatus(500)
             connection.release()
         }
