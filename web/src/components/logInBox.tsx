@@ -3,6 +3,7 @@ import "../css/logInRegister.css";
 import { UserService } from "../services/userService";
 import { useState } from "react";
 import { CircleAlert } from "lucide-react";
+import userData from "@shared/types/userData";
 
 function LogInBox(): JSX.Element {
   const userService: UserService = new UserService();
@@ -35,11 +36,13 @@ function LogInBox(): JSX.Element {
       );
       return
     }
-    const user: boolean = await userService.logIn({
+    const user: boolean | userData = await userService.logIn({
       email: email,
       password: password,
     });
-    if (user === true) navigate("/");
+    if (user !== false) {
+      navigate("/") 
+    }
     else
       setAnnouncementMessage(
         <div>

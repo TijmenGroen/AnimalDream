@@ -28,14 +28,14 @@ export class UserController {
         try{
             const result: any = await queryDatabase(connection,
                 `
-                SELECT *
+                SELECT firstname, lastname, email
                 FROM user
                 WHERE email = ?
                 AND password = ?
                 `,
                 [req.body.email], [req.body.password]
             )
-            if(result.length === 1)res.status(200).json(result)
+            if(result.length === 1)res.status(200).json(result[0])
             else if(result.length < 1)res.sendStatus(204)
             else res.sendStatus(500)
             connection.release()

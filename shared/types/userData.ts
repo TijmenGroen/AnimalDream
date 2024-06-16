@@ -3,3 +3,5 @@ export type userData = {
     lastname: string;
     email: string;
 }
+
+export default userData
