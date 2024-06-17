@@ -16,8 +16,6 @@ function Navigation(): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/typedef
   const [navBarSmallButtonRotation, setNavBarSmallButtonRotation] = useState("0deg");
   // eslint-disable-next-line @typescript-eslint/typedef
-  const [userData, setUserData] = useState({});
-  // eslint-disable-next-line @typescript-eslint/typedef
   const [userNameLogIn, setUserNameLogIn] = useState(<Link to="/login"><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>);
   // eslint-disable-next-line @typescript-eslint/typedef
   const [userNameLogInSmall, setUserNameLogInSmall] = useState(<Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>);
@@ -27,7 +25,6 @@ function Navigation(): JSX.Element {
       const userService: UserService = new UserService();
       const userData: userData | boolean = await userService.getUserData();
       if(userData) {
-        setUserData(userData)
         setUserNameLogIn(<Link to="/account"><div className="navbar-icon">{(userData as userData).firstname}<UserRound  size={18}/></div></Link>)
         setUserNameLogInSmall(<Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">{(userData as userData).firstname}<UserRound size={18}/></div></Link>)
       }
