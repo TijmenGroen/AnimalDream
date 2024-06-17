@@ -1,4 +1,3 @@
-import React from "react";
 import { ShoppingCart } from "lucide-react";
 import "../css/product.css";
 import Placeholder from "/assets/img/placeholder.svg";

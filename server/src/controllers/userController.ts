@@ -6,6 +6,19 @@ export class UserController {
     public async register(req: Request, res: Response): Promise<void> {
         const connection: PoolConnection = await getConnection()
         try{
+            const result: any = await queryDatabase(connection,
+                `
+                SELECT COUNT(*) as total
+                FROM user
+                WHERE email = ?
+                `,
+                [req.body.email]
+            )
+            if(result[0].total > 0) {
+                res.sendStatus(204);
+                connection.release()
+                return
+            }
             await queryDatabase(connection,
                 `
                 INSERT INTO user
@@ -13,7 +26,7 @@ export class UserController {
                 `,
                 [req.body.firstname, req.body.lastname, req.body.email, req.body.password]
             )
-            res.status(200);
+            res.sendStatus(200);
             connection.release()
         }
         catch(err){
