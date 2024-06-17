@@ -2,9 +2,11 @@ import Text from "/assets/img/animaldreamtext.png";
 import Logo from "/assets/img/animaldream.png";
 import ChevronDown from "/assets/img/chevron-down.svg";
 import "../css/navigation.css"
-import { Compass, LibraryBig, LogIn, ShoppingCart } from "lucide-react";
+import { Compass, LibraryBig, LogIn, ShoppingCart, UserRound } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { UserService } from "../services/userService";
+import { userData } from "@shared/types/userData"
 
 function Navigation(): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/typedef
@@ -13,6 +15,25 @@ function Navigation(): JSX.Element {
   const [navBarSmallOffset, setNavBarSmallOffset] = useState("-22rem");
   // eslint-disable-next-line @typescript-eslint/typedef
   const [navBarSmallButtonRotation, setNavBarSmallButtonRotation] = useState("0deg");
+  // eslint-disable-next-line @typescript-eslint/typedef
+  const [userData, setUserData] = useState({});
+  // eslint-disable-next-line @typescript-eslint/typedef
+  const [userNameLogIn, setUserNameLogIn] = useState(<Link to="/login"><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>);
+  // eslint-disable-next-line @typescript-eslint/typedef
+  const [userNameLogInSmall, setUserNameLogInSmall] = useState(<Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>);
+
+  useEffect(() => {
+      async function fetchData(): Promise<void> {
+      const userService: UserService = new UserService();
+      const userData: userData | boolean = await userService.getUserData();
+      if(userData) {
+        setUserData(userData)
+        setUserNameLogIn(<Link to="/account"><div className="navbar-icon">{(userData as userData).firstname}<UserRound  size={18}/></div></Link>)
+        setUserNameLogInSmall(<Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">{(userData as userData).firstname}<UserRound size={18}/></div></Link>)
+      }
+    }
+    fetchData()
+  })
 
   function toggleNavbarSmall(): void {
     if(navBarSmallToggled === false){
@@ -42,7 +63,7 @@ function Navigation(): JSX.Element {
           <Link to="/"><div className="navbar-icon">About<LibraryBig size={18}/></div></Link>
         </div>
         <div className="navbar-end">
-          <Link to="/login"><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>
+          {userNameLogIn}
         </div>
       </div>
       <div className="navbar-small-spacing"></div>
@@ -51,7 +72,7 @@ function Navigation(): JSX.Element {
           <Link to="/products" onClick={toggleNavbarSmall}><div className="navbar-icon">Products<Compass size={18}/></div></Link>
           <Link to="/cart" onClick={toggleNavbarSmall}><div className="navbar-icon">Cart<ShoppingCart size={18}/></div></Link>
           <Link to="/" onClick={toggleNavbarSmall}><div className="navbar-icon">About<LibraryBig size={18}/></div></Link>
-          <Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>
+          {userNameLogInSmall}
         </div>
         <div className="navbar-small-logo">
             <Link to="/" onClick={toggleNavbarSmall}>

@@ -4,4 +4,6 @@ export type userData = {
     email: string;
 }
 
-export default userData
+export type userId = {
+    userId: string;
+}

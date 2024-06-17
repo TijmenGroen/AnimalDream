@@ -1,7 +1,7 @@
 import "../css/cart.css";
 import CartItem from "../components/cartItem";
 
-function CartPage() {
+function CartPage(): JSX.Element {
     return (
       <div className="cartPage">
         <div className="cartItemsBox">

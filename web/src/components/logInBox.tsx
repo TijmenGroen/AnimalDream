@@ -3,7 +3,7 @@ import "../css/logInRegister.css";
 import { UserService } from "../services/userService";
 import { useState } from "react";
 import { CircleAlert } from "lucide-react";
-import userData from "@shared/types/userData";
+import { userData } from "@shared/types/userData";
 
 function LogInBox(): JSX.Element {
   const userService: UserService = new UserService();
@@ -40,7 +40,7 @@ function LogInBox(): JSX.Element {
       email: email,
       password: password,
     });
-    if (user !== false) {
+    if (user === true) {
       navigate("/") 
     }
     else

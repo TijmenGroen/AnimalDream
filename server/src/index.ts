@@ -7,7 +7,12 @@ export const app: Express = express();
 
 config();
 
-app.use(cors());
+const corsOptions: any = {
+    origin: true,
+    credentials: true,
+  }
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/", router);
 
