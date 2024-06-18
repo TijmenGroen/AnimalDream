@@ -10,6 +10,7 @@ import CartPage from "./pages/cartPage";
 import { LogInPage } from "./pages/LogInRegisterPage";
 import { RegisterPage } from "./pages/LogInRegisterPage";
 import Footer from "./components/footer";
+import AccountPage from "./pages/accountPage";
 
 function App(): JSX.Element {
   return (
@@ -23,6 +24,7 @@ function App(): JSX.Element {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/login" element={<LogInPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/account" element={<AccountPage />} />
           </Routes>
         </div>
         <Footer />

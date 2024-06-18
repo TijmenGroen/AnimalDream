@@ -1,0 +1,135 @@
+@media screen and (max-width:636px) {
+    .accountPage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .userDataContainerPart {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .userDataItemContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .userDataItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profileButtonsActions {
+        padding-left: 0px !important;
+    }
+
+    .profileButtonsHeader {
+        justify-content: center;
+    }
+
+    .profileButtonsActions {
+        align-items: center;
+    }
+
+    .userDataButtonHolder {
+        padding-top: 12px;
+    }
+}
+
+.accountPage {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 42px;
+}
+
+.profileButtons {
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+}
+
+.profileButtonsHeader {
+    display: flex;
+    font-weight: 700;
+    font-size: x-large;
+    padding-bottom: 16px;
+}
+
+.profileButtonsHeader > * {
+    display: flex;
+    align-items: center;
+}
+
+.profileButtonsActions {
+    display: flex;
+    flex-direction: column;
+    padding-left: 18%;
+    gap: 12px;
+}
+
+.profileButtonsActions > * {
+    display: flex;
+    align-items: center;
+    transition: all 300ms ease-in-out;
+}
+
+.profileButtonsActions > *:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.userDataContainer {
+    padding-top: 24px;
+}
+
+.userDataContainerPart {
+    display: flex;
+}
+
+.userDataItemContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.userDataItem {
+    flex-basis: 50%;
+}
+
+.userDataItemHeader {
+    font-weight: 700;
+}
+
+.userDataButtonHolder {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.userDataButtonHolder button {
+    background-color: #121675;
+    color: white;
+    font-weight: 550;
+    font-size: 18px;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    border: none;
+    padding: 0 16px 0 16px;
+    height: 38px;
+    box-shadow: 2px 4px 15px rgba(0, 0, 0, .5);
+    transition: background-color 100ms ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userDataButtonHolder button:hover {
+    background-color: #0b0d42;
+    cursor: pointer;
+}
