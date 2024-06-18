@@ -27,7 +27,7 @@ function UserDataContainer(): JSX.Element {
         </div>
       </div>
       <hr
-        style={{ borderWidth: "1px", width: "100%", borderColor: "#121675" }}
+        style={{ borderWidth: "1px", width: "100%", borderColor: "#121675", marginBlock: "20px"}}
       />
       <div className="userDataItemContainer">
         <div className="userDataItem">
