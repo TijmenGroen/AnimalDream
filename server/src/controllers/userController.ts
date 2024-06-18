@@ -54,10 +54,9 @@ export class UserController {
             )
             if(result.length === 1){
                 const token: string = jwt.sign({ id: result[0].userId }, (process.env.JWT_SECRET_KEY as string), { expiresIn: "1h"})
-                res.cookie("jwt", token, {maxAge: maxCookieAge})
-                res.sendStatus(200)
+                res.cookie("jwt", token, {maxAge: maxCookieAge}).sendStatus(200)
             }
-            else if(result.length < 1)res.sendStatus(204)
+            else if(result.length < 1) res.sendStatus(204)
             else res.sendStatus(500)
             connection.release()
         }
@@ -82,7 +81,6 @@ export class UserController {
                 `,
                 [token.id]
             )
-            console.log(result)
             res.status(200).json(result[0])
         }
         catch(err){

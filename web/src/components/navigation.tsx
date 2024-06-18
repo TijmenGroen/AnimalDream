@@ -3,7 +3,7 @@ import Logo from "/assets/img/animaldream.png";
 import ChevronDown from "/assets/img/chevron-down.svg";
 import "../css/navigation.css"
 import { Compass, LibraryBig, LogIn, ShoppingCart, UserRound } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { UserService } from "../services/userService";
 import { userData } from "@shared/types/userData"
@@ -16,21 +16,17 @@ function Navigation(): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/typedef
   const [navBarSmallButtonRotation, setNavBarSmallButtonRotation] = useState("0deg");
   // eslint-disable-next-line @typescript-eslint/typedef
-  const [userNameLogIn, setUserNameLogIn] = useState(<Link to="/login"><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>);
-  // eslint-disable-next-line @typescript-eslint/typedef
-  const [userNameLogInSmall, setUserNameLogInSmall] = useState(<Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>);
+  const [userData, setUserData] = useState({});
+
+  const location: any = useLocation();
 
   useEffect(() => {
-      async function fetchData(): Promise<void> {
+    async function fetchData(): Promise<void> {
       const userService: UserService = new UserService();
-      const userData: userData | boolean = await userService.getUserData();
-      if(userData) {
-        setUserNameLogIn(<Link to="/account"><div className="navbar-icon">{(userData as userData).firstname}<UserRound  size={18}/></div></Link>)
-        setUserNameLogInSmall(<Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">{(userData as userData).firstname}<UserRound size={18}/></div></Link>)
-      }
+      setUserData(await userService.getUserData());
     }
     fetchData()
-  })
+  }, [location])
 
   function toggleNavbarSmall(): void {
     if(navBarSmallToggled === false){
@@ -60,7 +56,8 @@ function Navigation(): JSX.Element {
           <Link to="/"><div className="navbar-icon">About<LibraryBig size={18}/></div></Link>
         </div>
         <div className="navbar-end">
-          {userNameLogIn}
+          {!userData && <Link to="/login"><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>}
+          {userData && <Link to="/account"><div className="navbar-icon">{(userData as userData).firstname}<UserRound  size={18}/></div></Link>}
         </div>
       </div>
       <div className="navbar-small-spacing"></div>
@@ -69,7 +66,8 @@ function Navigation(): JSX.Element {
           <Link to="/products" onClick={toggleNavbarSmall}><div className="navbar-icon">Products<Compass size={18}/></div></Link>
           <Link to="/cart" onClick={toggleNavbarSmall}><div className="navbar-icon">Cart<ShoppingCart size={18}/></div></Link>
           <Link to="/" onClick={toggleNavbarSmall}><div className="navbar-icon">About<LibraryBig size={18}/></div></Link>
-          {userNameLogInSmall}
+          {!userData && <Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>}
+          {userData && <Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">{(userData as userData).firstname}<UserRound size={18}/></div></Link>}
         </div>
         <div className="navbar-small-logo">
             <Link to="/" onClick={toggleNavbarSmall}>
