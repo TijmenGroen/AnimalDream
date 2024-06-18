@@ -12,6 +12,7 @@ export class UserService {
         const response: Response = await fetch(`${import.meta.env.VITE_API_URL}user/register`, {
             method: "post",
             headers: headers,
+            credentials: "include",
             body: JSON.stringify(formData)
         });
 

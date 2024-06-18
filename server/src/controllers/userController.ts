@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getConnection, queryDatabase } from "../databaseConfig";
-import { PoolConnection } from "mysql2/promise";
+import { PoolConnection, ResultSetHeader } from "mysql2/promise";
 import jwt from "jsonwebtoken"
 import { userData, userId } from "@shared/types/userData";
 
@@ -23,14 +23,15 @@ export class UserController {
                 connection.release()
                 return
             }
-            await queryDatabase(connection,
+            const result2: ResultSetHeader = await queryDatabase(connection,
                 `
                 INSERT INTO user
                 VALUES (DEFAULT, ?)
                 `,
                 [req.body.firstname, req.body.lastname, req.body.email, req.body.password]
             )
-            res.sendStatus(200);
+            const token: string = jwt.sign({ id: result2.insertId }, (process.env.JWT_SECRET_KEY as string), { expiresIn: "1h"})
+            res.cookie("jwt", token, {maxAge: maxCookieAge}).sendStatus(200);
             connection.release()
         }
         catch(err){
