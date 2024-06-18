@@ -27,7 +27,7 @@ const ProductPage: React.FC = (): JSX.Element => {
     };
 
     fetchProducts();
-  }, []);
+  });
 
   if (loading) {
     return <div>Loading...</div>;
