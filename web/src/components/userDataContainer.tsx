@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/typedef */
 import { useEffect, useState } from "react";
 import "../css/account.css";
 import { UserService } from "../services/userService";
 import { userData } from "@shared/types/userData"
+import ModalBox from "../components/modalBox";
 
 function UserDataContainer(): JSX.Element {
 
@@ -15,10 +17,12 @@ function UserDataContainer(): JSX.Element {
   const [userPhoneNumber, setUserPhoneNumber] = useState("N.v.t");
   // eslint-disable-next-line @typescript-eslint/typedef
   const [userTitle, setUserTitle] = useState("Anders");
+  // eslint-disable-next-line @typescript-eslint/typedef
+  const [modalBoxDisplay, setModalBoxDisplay] = useState(false);
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [modalBoxDisplay])
 
   async function fetchData(): Promise<void> {
     const userService: UserService = new UserService();
@@ -31,51 +35,64 @@ function UserDataContainer(): JSX.Element {
     if(userData.title)setUserTitle(userData.title)
   }
 
+  const toggleModalBox = (): void => {
+    console.log("toggle")
+    if(modalBoxDisplay) setModalBoxDisplay(false)
+    if(!modalBoxDisplay) setModalBoxDisplay(true)
+  }
+
   return (
-    <div className="userDataContainer">
-      <div className="userDataContainerPart">
+    <>
+      <ModalBox show={modalBoxDisplay} showFunction={toggleModalBox} header="Adres Toevoegen" body={
+        <div>
+          hihi
+        </div>
+      } />
+      <div className="userDataContainer">
+        <div className="userDataContainerPart">
+          <div className="userDataItemContainer">
+            <div className="userDataItem">
+              <div className="userDataItemHeader">Naam</div>
+              <div className="userDataItemContent">{userFirstname} {userLastname}</div>
+            </div>
+            <div className="userDataItem">
+              <div className="userDataItemHeader">E-mail</div>
+              <div className="userDataItemContent">{userEmail}</div>
+            </div>
+            <div className="userDataItem">
+              <div className="userDataItemHeader">Aanhef</div>
+              <div className="userDataItemContent">{userTitle}</div>
+            </div>
+            <div className="userDataItem">
+              <div className="userDataItemHeader">Telefoon Nummer</div>
+              <div className="userDataItemContent">{userPhoneNumber}</div>
+            </div>
+          </div>
+          <div className="userDataButtonHolder">
+            <button>Wijzigen</button>
+          </div>
+        </div>
+        <hr/>
         <div className="userDataItemContainer">
           <div className="userDataItem">
-            <div className="userDataItemHeader">Naam</div>
-            <div className="userDataItemContent">{userFirstname} {userLastname}</div>
+            <div className="userDataItemHeader">Wachtwoord</div>
+            <div className="userDataItemContent">************</div>
           </div>
-          <div className="userDataItem">
-            <div className="userDataItemHeader">E-mail</div>
-            <div className="userDataItemContent">{userEmail}</div>
-          </div>
-          <div className="userDataItem">
-            <div className="userDataItemHeader">Aanhef</div>
-            <div className="userDataItemContent">{userTitle}</div>
-          </div>
-          <div className="userDataItem">
-            <div className="userDataItemHeader">Telefoon Nummer</div>
-            <div className="userDataItemContent">{userPhoneNumber}</div>
+          <div className="userDataButtonHolder">
+            <button>Wijzigen</button>
           </div>
         </div>
-        <div className="userDataButtonHolder">
-          <button>Wijzigen</button>
+        <hr/>
+        <div className="userDataItemContainer">
+          <div className="userDataItem">
+            Geen adressen
+          </div>
+          <div className="userDataButtonHolder">
+            <button onClick={toggleModalBox}>Adres toevoegen</button>
+          </div>
         </div>
       </div>
-      <hr/>
-      <div className="userDataItemContainer">
-        <div className="userDataItem">
-          <div className="userDataItemHeader">Wachtwoord</div>
-          <div className="userDataItemContent">************</div>
-        </div>
-        <div className="userDataButtonHolder">
-          <button>Wijzigen</button>
-        </div>
-      </div>
-      <hr/>
-      <div className="userDataItemContainer">
-        <div className="userDataItem">
-          Geen adressen
-        </div>
-        <div className="userDataButtonHolder">
-          <button>Adress toevoegen</button>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
 

@@ -1,0 +1,46 @@
+.modalFull {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .3);
+    transform: translateY(-104px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width:636px) {
+    .modalFull {
+        transform: translateY(-120px);
+    }
+}
+
+.modalBox {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    background-color: white;
+    border-radius: 4px;
+    height: fit-content;
+}
+
+.modalBoxInner {
+    padding: 8px;
+}
+
+.modalBoxInner hr {
+    border-width: 1px;
+    width: 100%;
+    border-color: #121675;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+}
+
+.modalBody {
+    display: flex;
+    justify-content: center;
+}
