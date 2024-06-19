@@ -18,6 +18,7 @@ router.post("/user/login", (req: Request, res: Response) => userController.logIn
 
 router.use(handleTokenBasedAuthentication)
 router.post("/user/getUserData", (req: Request, res: Response) => userController.getUserData(req, res))
+router.post("/user/addAddressToUser", (req: Request, res: Response) => userController.addAddressToUser(req, res))
 
 
 export default router;

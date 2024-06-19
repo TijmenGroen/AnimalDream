@@ -1,5 +1,6 @@
 import registerFormModal from "@shared/formModels/registerFormModel"
 import logInFormModal from "@shared/formModels/logInFormModel"
+import addressFormModel from "@shared/formModels/addressFormModel"
 import { userData } from "@shared/types/userData";
 import { getCookie } from "../cookie";
 
@@ -66,5 +67,25 @@ export class UserService {
             return false
         }
         return await response.json();
+    } 
+
+    // Uses authentication middleware
+    public async addAddressToUser(formData: addressFormModel): Promise<boolean> {
+        const jwt: string | false = getCookie("jwt")
+
+        const response: Response = await fetch(`${import.meta.env.VITE_API_URL}user/addAddressToUser`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `${jwt}`
+            },
+            body: JSON.stringify(formData)
+        });
+
+        if(!response.ok){
+            console.error(response)
+            return false
+        }
+        return true;
     } 
 }

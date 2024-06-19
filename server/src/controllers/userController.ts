@@ -98,4 +98,52 @@ export class UserController {
             throw err;
         }
     }
+
+    // Uses auth middleware
+    public async addAddressToUser(req: Request, res: Response): Promise<void> {
+        const connection: PoolConnection = await getConnection()
+        const jwtToken: string = req.headers["authorization"]!;
+        const token: any = jwt.verify(jwtToken, (process.env.JWT_SECRET_KEY as string))
+        try{
+            const result2: any = await queryDatabase(connection,
+                `
+                SELECT addressId
+                FROM address
+                WHERE postalCode = ?
+                AND houseNumber = ?
+                `,
+                [req.body.postalCode], [req.body.houseNumber]
+            )
+            if(result2.length < 1) {
+                const result: ResultSetHeader = await queryDatabase(connection,
+                    `
+                    INSERT INTO address
+                    VALUES (DEFAULT, ?)
+                    `,
+                    [req.body.city, req.body.street, req.body.houseNumber, req.body.postalCode]
+                )
+                await queryDatabase(connection,
+                    `
+                    INSERT INTO user_address
+                    VALUES (?)
+                    `,
+                    [token.id, result.insertId]
+                )
+            }
+            else {
+                await queryDatabase(connection,
+                    `
+                    INSERT INTO user_address
+                    VALUES (?)
+                    `,
+                    [token.id, result2[0].addressId]
+                )
+            }
+        }
+        catch(err){
+            res.sendStatus(400);
+            connection.release()
+            throw err;
+        }
+    }
 }

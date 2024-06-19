@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/typedef */
 import { useEffect, useState } from "react";
 import "../css/account.css";
 import { UserService } from "../services/userService";
@@ -16,8 +15,18 @@ function UserDataContainer(): JSX.Element {
   const [userPhoneNumber, setUserPhoneNumber] = useState("N.v.t");
   // eslint-disable-next-line @typescript-eslint/typedef
   const [userTitle, setUserTitle] = useState("Anders");
+
   // eslint-disable-next-line @typescript-eslint/typedef
   const [modalBoxDisplay, setModalBoxDisplay] = useState(false);
+
+  // eslint-disable-next-line @typescript-eslint/typedef
+  const [addressCity, setAddressCity] = useState("");
+  // eslint-disable-next-line @typescript-eslint/typedef
+  const [addressStreet, setAddressStreet] = useState("");
+  // eslint-disable-next-line @typescript-eslint/typedef
+  const [addressHouseNumber, setAddressHouseNumber] = useState("");
+  // eslint-disable-next-line @typescript-eslint/typedef
+  const [addressPostalCode, setAddressPostalCode] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -34,8 +43,18 @@ function UserDataContainer(): JSX.Element {
     if (userData.title) setUserTitle(userData.title);
   }
 
+  async function submitAddress(): Promise<void> {
+    const userService: UserService = new UserService();
+    await userService.addAddressToUser({
+      postalCode: addressPostalCode,
+      city: addressCity,
+      street: addressStreet,
+      houseNumber: addressHouseNumber
+    })
+  }
+
+  // eslint-disable-next-line @typescript-eslint/typedef
   const toggleModalBox = (): void => {
-    console.log("toggle");
     if (modalBoxDisplay) setModalBoxDisplay(false);
     if (!modalBoxDisplay) setModalBoxDisplay(true);
   };
@@ -50,21 +69,48 @@ function UserDataContainer(): JSX.Element {
           <div className="addAddress">
             <div className="addAddressItem">
               <div>Postcode</div>
-              <input type="text" id="postalCode" />
+              <input
+                type="text"
+                id="postalCode"
+                onChange={(e: any) => {
+                  setAddressPostalCode(e.target.value);
+                }}
+              />
             </div>
             <div className="addAddressItem">
               <div>Huisnummer</div>
-              <input type="text" id="houseNumber" />
+              <input
+                type="text"
+                id="houseNumber"
+                onChange={(e: any) => {
+                  setAddressHouseNumber(e.target.value);
+                }}
+              />
             </div>
             <div className="addAddressItem">
               <div>Straat</div>
-              <input type="text" id="street" />
+              <input
+                type="text"
+                id="street"
+                onChange={(e: any) => {
+                  setAddressStreet(e.target.value);
+                }}
+              />
             </div>
             <div className="addAddressItem">
               <div>Stad</div>
-              <input type="text" id="city" />
+              <input
+                type="text"
+                id="city"
+                onChange={(e: any) => {
+                  setAddressCity(e.target.value);
+                }}
+              />
             </div>
-            <button style={{ marginTop: "16px" }}>Toevoegen</button>
+            <button style={{ marginTop: "16px" }} onClick={() => {
+              submitAddress()
+              toggleModalBox
+            }}>Toevoegen</button>
           </div>
         }
       />
