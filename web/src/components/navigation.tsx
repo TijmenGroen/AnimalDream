@@ -6,7 +6,6 @@ import { Compass, LibraryBig, LogIn, ShoppingCart, UserRound } from "lucide-reac
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { UserService } from "../services/userService";
-import { userData } from "@shared/types/userData"
 
 function Navigation(): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/typedef

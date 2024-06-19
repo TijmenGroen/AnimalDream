@@ -2,9 +2,11 @@ import { Request, Response } from "express";
 import { getConnection, queryDatabase } from "../databaseConfig";
 import { PoolConnection, ResultSetHeader } from "mysql2/promise";
 import jwt from "jsonwebtoken"
-import { userData, userId } from "@shared/types/userData";
+import bcrypt from "bcrypt"
+import { userData } from "@shared/types/userData";
 
 const maxCookieAge: number = 24 * 60 * 60 * 1000
+const saltRounds: number = 10
 
 export class UserController {
     public async register(req: Request, res: Response): Promise<void> {
@@ -23,12 +25,14 @@ export class UserController {
                 connection.release()
                 return
             }
+            
+            const hashedPassword: string = bcrypt.hashSync(req.body.password, saltRounds)
             const result2: ResultSetHeader = await queryDatabase(connection,
                 `
                 INSERT INTO user
                 VALUES (DEFAULT, ?)
                 `,
-                [req.body.firstname, req.body.lastname, req.body.email, req.body.password]
+                [req.body.firstname, req.body.lastname, req.body.email, hashedPassword]
             )
             const token: string = jwt.sign({ id: result2.insertId }, (process.env.JWT_SECRET_KEY as string), { expiresIn: "1h"})
             res.cookie("jwt", token, {maxAge: maxCookieAge}).sendStatus(200);
@@ -44,16 +48,20 @@ export class UserController {
     public async logIn(req: Request, res: Response): Promise<void> {
         const connection: PoolConnection = await getConnection()
         try{
-            const result: userId[] = await queryDatabase(connection,
+            const result: {userId: number, password: string}[] = await queryDatabase(connection,
                 `
-                SELECT userId
+                SELECT userId, password
                 FROM user
                 WHERE email = ?
-                AND password = ?
                 `,
-                [req.body.email], [req.body.password]
+                [req.body.email]
             )
             if(result.length === 1){
+                const passwordCorrect: boolean = bcrypt.compareSync(req.body.password, result[0].password)
+                if(!passwordCorrect) {
+                    res.sendStatus(401) 
+                    return
+                }
                 const token: string = jwt.sign({ id: result[0].userId }, (process.env.JWT_SECRET_KEY as string), { expiresIn: "1h"})
                 res.cookie("jwt", token, {maxAge: maxCookieAge}).sendStatus(200)
             }

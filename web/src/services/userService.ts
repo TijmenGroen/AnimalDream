@@ -33,7 +33,7 @@ export class UserService {
             body: JSON.stringify(formData)
         });
         
-        if(response.status === 204) return false
+        if(response.status === 204 || response.status === 401) return false
         
         if(!response.ok){
             console.error(response)
