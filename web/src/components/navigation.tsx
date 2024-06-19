@@ -16,14 +16,14 @@ function Navigation(): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/typedef
   const [navBarSmallButtonRotation, setNavBarSmallButtonRotation] = useState("0deg");
   // eslint-disable-next-line @typescript-eslint/typedef
-  const [userData, setUserData] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const location: any = useLocation();
 
   useEffect(() => {
     async function fetchData(): Promise<void> {
       const userService: UserService = new UserService();
-      setUserData(await userService.getUserData());
+      setLoggedIn(userService.checkIfLoggedIn());
     }
     fetchData()
   }, [location])
@@ -56,8 +56,8 @@ function Navigation(): JSX.Element {
           <Link to="/"><div className="navbar-icon">About<LibraryBig size={18}/></div></Link>
         </div>
         <div className="navbar-end">
-          {!userData && <Link to="/login"><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>}
-          {userData && <Link to="/account"><div className="navbar-icon">{(userData as userData).firstname}<UserRound  size={18}/></div></Link>}
+          {!loggedIn && <Link to="/login"><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>}
+          {loggedIn && <Link to="/account"><div className="navbar-icon">Account<UserRound  size={18}/></div></Link>}
         </div>
       </div>
       <div className="navbar-small-spacing"></div>
@@ -66,8 +66,8 @@ function Navigation(): JSX.Element {
           <Link to="/products" onClick={toggleNavbarSmall}><div className="navbar-icon">Products<Compass size={18}/></div></Link>
           <Link to="/cart" onClick={toggleNavbarSmall}><div className="navbar-icon">Cart<ShoppingCart size={18}/></div></Link>
           <Link to="/" onClick={toggleNavbarSmall}><div className="navbar-icon">About<LibraryBig size={18}/></div></Link>
-          {!userData && <Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>}
-          {userData && <Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">{(userData as userData).firstname}<UserRound size={18}/></div></Link>}
+          {!loggedIn && <Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>}
+          {loggedIn && <Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">Account<UserRound size={18}/></div></Link>}
         </div>
         <div className="navbar-small-logo">
             <Link to="/" onClick={toggleNavbarSmall}>

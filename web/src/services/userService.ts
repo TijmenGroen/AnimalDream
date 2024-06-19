@@ -42,7 +42,12 @@ export class UserService {
         return true
     }
     
+    public checkIfLoggedIn(): boolean {
+        const jwt: string | false = getCookie("jwt")
 
+        if(jwt) return true
+        else return false
+    }
 
     // Uses authentication middleware
     public async getUserData(): Promise<boolean | userData> {
