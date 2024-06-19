@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import { userData } from "@shared/types/userData";
 
-const maxCookieAge: number = 24 * 60 * 60 * 1000
+const maxCookieAge: number = 60 * 60 * 1000
 const saltRounds: number = 10
 
 export class UserController {
@@ -32,7 +32,7 @@ export class UserController {
                 INSERT INTO user
                 VALUES (DEFAULT, ?)
                 `,
-                [req.body.firstname, req.body.lastname, req.body.email, hashedPassword]
+                [req.body.firstname, req.body.lastname, req.body.email, hashedPassword, null, "Geen van Beide"]
             )
             const token: string = jwt.sign({ id: result2.insertId }, (process.env.JWT_SECRET_KEY as string), { expiresIn: "1h"})
             res.cookie("jwt", token, {maxAge: maxCookieAge}).sendStatus(200);
@@ -84,7 +84,7 @@ export class UserController {
         try{
             const result: userData[] = await queryDatabase(connection,
                 `
-                SELECT firstname, lastname, email
+                SELECT firstname, lastname, email, phoneNumber, title
                 FROM user
                 WHERE userId = ?
                 `,

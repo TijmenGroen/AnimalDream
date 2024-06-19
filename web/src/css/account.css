@@ -99,6 +99,13 @@
     row-gap: 16px;
 }
 
+.userDataContainer hr {
+    border-width: 1px;
+    width: 100%;
+    border-color: #121675;
+    margin-block: 20px;
+}
+
 .userDataItem {
     flex-basis: 50%;
 }
