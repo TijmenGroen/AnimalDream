@@ -68,6 +68,19 @@ function RegisterBox(): JSX.Element {
       return;
     }
 
+    if(password !== repeatPassword) {
+      setPasswordColor("#cc0000");
+      setRepeatPasswordColor("#cc0000");
+      setAnnouncementMessage(
+        <div>
+          <CircleAlert style={{ transform: "translateY(4px)" }} />
+          <br />
+          Wachtwoorden komen niet overeen
+        </div>
+      );
+      return;
+    }
+
     const userService: UserService = new UserService();
 
     const result: any = await userService.register({

@@ -1,6 +1,6 @@
 import "../css/logInRegister.css";
 import LogInBox from "../components/logInBox";
-import RegisterBox from "../components/registerbox";
+import RegisterBox from "../components/registerBox";
 
 export function LogInPage() {
   return (
