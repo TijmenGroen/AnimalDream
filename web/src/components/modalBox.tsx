@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../css/modalBox.css";
+import { X } from "lucide-react";
 
 function ModalBox(props: { header: string; body: JSX.Element, show: boolean, showFunction: any}): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/typedef
@@ -19,8 +20,9 @@ function ModalBox(props: { header: string; body: JSX.Element, show: boolean, sho
                 <div>{props.header}</div>
                 <div
                   onClick={props.showFunction}
+                  style={{ cursor: "pointer" }}
                 >
-                  X
+                  <X />
                 </div>
               </div>
               <hr />

@@ -31,14 +31,36 @@
     .profileButtonsHeader {
         justify-content: center;
     }
-
+    
     .profileButtonsActions {
         align-items: center;
     }
-
+    
     .userDataButtonHolder {
         padding-top: 12px;
     }
+}
+
+.accountPage button {
+    background-color: #121675;
+    color: white;
+    font-weight: 550;
+    font-size: 18px;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    border: none;
+    padding: 0 16px 0 16px;
+    height: 38px;
+    box-shadow: 2px 4px 15px rgba(0, 0, 0, .5);
+    transition: background-color 100ms ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.accountPage button:hover {
+    background-color: #0b0d42;
+    cursor: pointer;
 }
 
 .accountPage {
@@ -128,24 +150,16 @@
     justify-content: flex-end;
 }
 
-.userDataButtonHolder button {
-    background-color: #121675;
-    color: white;
-    font-weight: 550;
-    font-size: 18px;
-    letter-spacing: 1px;
-    border-radius: 8px;
-    border: none;
-    padding: 0 16px 0 16px;
-    height: 38px;
-    box-shadow: 2px 4px 15px rgba(0, 0, 0, .5);
-    transition: background-color 100ms ease-in-out;
+.addAddress {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.userDataButtonHolder button:hover {
-    background-color: #0b0d42;
-    cursor: pointer;
+.addAddress input {
+    border-radius: 4px;
+    font-size: large;
+    border: 1px;
+    border-color: black;
+    border-style: solid;
 }
