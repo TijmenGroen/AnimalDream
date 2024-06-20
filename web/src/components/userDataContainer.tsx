@@ -176,7 +176,8 @@ function UserDataContainer(): JSX.Element {
           </div>
         </div>
         <hr />
-        <div className="userDataItemContainer">
+        <div className="userDataItemContainer" >
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px"}}>
             {address.map((e: addressData) => (
               <div className="userDataItem" key={e.postalCode + e.houseNumber}>
                 <div className="userDataItemHeader">
@@ -187,8 +188,9 @@ function UserDataContainer(): JSX.Element {
                 </div>
               </div>
             ))}
+            </div>
           <div className="userDataButtonHolder">
-            <button onClick={toggleModalBox}>Adres toevoegen</button>
+            <button onClick={toggleModalBox}>Adres toevoegen</button> 
           </div>
         </div>
       </div>
