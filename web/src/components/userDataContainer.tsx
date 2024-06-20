@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../css/account.css";
 import { UserService } from "../services/userService";
-import { userData } from "@shared/types/userData";
+import { addressData, userData } from "@shared/types/userData";
 import ModalBox from "../components/modalBox";
 
 function UserDataContainer(): JSX.Element {
@@ -20,13 +20,16 @@ function UserDataContainer(): JSX.Element {
   const [modalBoxDisplay, setModalBoxDisplay] = useState(false);
 
   // eslint-disable-next-line @typescript-eslint/typedef
-  const [addressCity, setAddressCity] = useState("");
+  const [addressCityForm, setAddressCityForm] = useState("");
   // eslint-disable-next-line @typescript-eslint/typedef
-  const [addressStreet, setAddressStreet] = useState("");
+  const [addressStreetForm, setAddressStreetForm] = useState("");
   // eslint-disable-next-line @typescript-eslint/typedef
-  const [addressHouseNumber, setAddressHouseNumber] = useState("");
+  const [addressHouseNumberForm, setAddressHouseNumberForm] = useState("");
   // eslint-disable-next-line @typescript-eslint/typedef
-  const [addressPostalCode, setAddressPostalCode] = useState("");
+  const [addressPostalCodeForm, setAddressPostalCodeForm] = useState("");
+
+  // eslint-disable-next-line @typescript-eslint/typedef
+  const [address, setAddress] = useState<addressData[]>([] as addressData[]);
 
   useEffect(() => {
     fetchData();
@@ -35,22 +38,38 @@ function UserDataContainer(): JSX.Element {
   async function fetchData(): Promise<void> {
     const userService: UserService = new UserService();
     if (!userService) return;
-    const userData: userData = (await userService.getUserData()) as userData;
-    setUserFirstname(userData.firstname);
-    setUserLastname(userData.lastname);
-    setUserEmail(userData.email);
-    if (userData.phoneNumber) setUserPhoneNumber(userData.phoneNumber);
-    if (userData.title) setUserTitle(userData.title);
+    
+    const userData: userData[] = (await userService.getUserData()) as userData[];
+
+    setUserFirstname(userData[0].firstname);
+    setUserLastname(userData[0].lastname);
+    setUserEmail(userData[0].email);
+    if (userData[0].phoneNumber) setUserPhoneNumber(userData[0].phoneNumber);
+    if (userData[0].title) setUserTitle(userData[0].title);
+
+    if (userData[0].postalCode)
+      for(let i: number = 0; i < userData.length; i++){
+      // eslint-disable-next-line @typescript-eslint/typedef
+      setAddress((oldArray) => [
+        ...oldArray,
+        {
+          city: userData[i].city,
+          street: userData[i].street,
+          houseNumber: userData[i].houseNumber,
+          postalCode: userData[i].postalCode,
+        },
+      ]);
+    }
   }
 
   async function submitAddress(): Promise<void> {
     const userService: UserService = new UserService();
     await userService.addAddressToUser({
-      postalCode: addressPostalCode,
-      city: addressCity,
-      street: addressStreet,
-      houseNumber: addressHouseNumber
-    })
+      postalCode: addressPostalCodeForm,
+      city: addressCityForm,
+      street: addressStreetForm,
+      houseNumber: addressHouseNumberForm,
+    });
   }
 
   // eslint-disable-next-line @typescript-eslint/typedef
@@ -73,7 +92,7 @@ function UserDataContainer(): JSX.Element {
                 type="text"
                 id="postalCode"
                 onChange={(e: any) => {
-                  setAddressPostalCode(e.target.value);
+                  setAddressPostalCodeForm(e.target.value);
                 }}
               />
             </div>
@@ -83,7 +102,7 @@ function UserDataContainer(): JSX.Element {
                 type="text"
                 id="houseNumber"
                 onChange={(e: any) => {
-                  setAddressHouseNumber(e.target.value);
+                  setAddressHouseNumberForm(e.target.value);
                 }}
               />
             </div>
@@ -93,7 +112,7 @@ function UserDataContainer(): JSX.Element {
                 type="text"
                 id="street"
                 onChange={(e: any) => {
-                  setAddressStreet(e.target.value);
+                  setAddressStreetForm(e.target.value);
                 }}
               />
             </div>
@@ -103,14 +122,19 @@ function UserDataContainer(): JSX.Element {
                 type="text"
                 id="city"
                 onChange={(e: any) => {
-                  setAddressCity(e.target.value);
+                  setAddressCityForm(e.target.value);
                 }}
               />
             </div>
-            <button style={{ marginTop: "16px" }} onClick={() => {
-              submitAddress()
-              toggleModalBox
-            }}>Toevoegen</button>
+            <button
+              style={{ marginTop: "16px" }}
+              onClick={() => {
+                submitAddress();
+                toggleModalBox;
+              }}
+            >
+              Toevoegen
+            </button>
           </div>
         }
       />
@@ -153,7 +177,16 @@ function UserDataContainer(): JSX.Element {
         </div>
         <hr />
         <div className="userDataItemContainer">
-          <div className="userDataItem">Geen adressen</div>
+            {address.map((e: addressData) => (
+              <div className="userDataItem" key={e.postalCode + e.houseNumber}>
+                <div className="userDataItemHeader">
+                  {e.street} {e.houseNumber}
+                </div>
+                <div className="userDataItemContent">
+                  {e.city} - {e.postalCode}
+                </div>
+              </div>
+            ))}
           <div className="userDataButtonHolder">
             <button onClick={toggleModalBox}>Adres toevoegen</button>
           </div>
@@ -164,3 +197,4 @@ function UserDataContainer(): JSX.Element {
 }
 
 export default UserDataContainer;
+

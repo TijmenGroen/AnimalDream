@@ -84,13 +84,15 @@ export class UserController {
         try{
             const result: userData[] = await queryDatabase(connection,
                 `
-                SELECT firstname, lastname, email, phoneNumber, title
-                FROM user
-                WHERE userId = ?
+                SELECT DISTINCT u.firstname, u.lastname, u.email, u.phoneNumber, u.title, a.city, a.street, a.houseNumber, a.postalCode
+                FROM user u
+                INNER JOIN user_address ua ON u.userId = ua.userId
+                INNER JOIN address a ON ua.addressId = a.addressId
+                WHERE u.userId = ?
                 `,
                 [token.id]
             )
-            res.status(200).json(result[0])
+            res.status(200).json(result)
         }
         catch(err){
             res.sendStatus(400);
