@@ -1,7 +1,17 @@
 import { Laptop, LogOut, Package, SquareGanttChart, UserRoundCog } from "lucide-react";
 import "../css/account.css";
+import { UserService } from "../services/userService";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 function ProfileButtons(): JSX.Element {
+const navigate: NavigateFunction = useNavigate();
+
+async function logOut(): Promise<void> {
+    const userService: UserService = new UserService();
+    await userService.logOut()
+    navigate("/")
+}
+
     return (
         <div className="profileButtons">
             <div className="profileButtonsHeader">
@@ -19,7 +29,9 @@ function ProfileButtons(): JSX.Element {
                 <div>
                     <Laptop /> Klant Portaal
                 </div>
-                <div>
+                <div onClick={() => {
+                    logOut()
+                }}>
                     <LogOut /> Uitloggen
                 </div>
             </div>

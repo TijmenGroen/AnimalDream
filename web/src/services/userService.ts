@@ -43,6 +43,26 @@ export class UserService {
         return true
     }
     
+    // Uses authentication middleware
+    public async logOut(): Promise<boolean> {
+        const jwt: string | false = getCookie("jwt")
+
+        const response: Response = await fetch(`${import.meta.env.VITE_API_URL}user/logOut`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `${jwt}`
+            },
+            credentials: "include"
+        });
+
+        if(!response.ok){
+            console.error(response)
+            return false
+        }
+        return true;
+    } 
+
     public checkIfLoggedIn(): boolean {
         const jwt: string | false = getCookie("jwt")
 

@@ -20,11 +20,11 @@ function Navigation(): JSX.Element {
   const location: any = useLocation();
 
   useEffect(() => {
-    async function fetchData(): Promise<void> {
+    async function checkIfLoggedIn(): Promise<void> {
       const userService: UserService = new UserService();
       setLoggedIn(userService.checkIfLoggedIn());
     }
-    fetchData()
+    checkIfLoggedIn()
   }, [location])
 
   function toggleNavbarSmall(): void {

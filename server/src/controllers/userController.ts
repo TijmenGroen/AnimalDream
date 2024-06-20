@@ -32,7 +32,7 @@ export class UserController {
                 INSERT INTO user
                 VALUES (DEFAULT, ?)
                 `,
-                [req.body.firstname, req.body.lastname, req.body.email, hashedPassword, null, "Geen van Beide"]
+                [req.body.firstname, req.body.lastname, req.body.email, hashedPassword, null, null]
             )
             const token: string = jwt.sign({ id: result2.insertId }, (process.env.JWT_SECRET_KEY as string), { expiresIn: "1h"})
             res.cookie("jwt", token, {maxAge: maxCookieAge}).sendStatus(200);
@@ -145,6 +145,17 @@ export class UserController {
         catch(err){
             res.sendStatus(400);
             connection.release()
+            throw err;
+        }
+    }
+
+    // Uses auth middleware
+    public async logOut(_req: Request, res: Response): Promise<void> {
+        try{
+            res.clearCookie("jwt").sendStatus(200)
+        }
+        catch(err){
+            res.sendStatus(400);
             throw err;
         }
     }
