@@ -66,7 +66,7 @@ function Navigation(): JSX.Element {
           <Link to="/cart" onClick={toggleNavbarSmall}><div className="navbar-icon">Cart<ShoppingCart size={18}/></div></Link>
           <Link to="/" onClick={toggleNavbarSmall}><div className="navbar-icon">About<LibraryBig size={18}/></div></Link>
           {!loggedIn && <Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">Log In<LogIn size={18}/></div></Link>}
-          {loggedIn && <Link to="/login" onClick={toggleNavbarSmall}><div className="navbar-icon">Account<UserRound size={18}/></div></Link>}
+          {loggedIn && <Link to="/account" onClick={toggleNavbarSmall}><div className="navbar-icon">Account<UserRound size={18}/></div></Link>}
         </div>
         <div className="navbar-small-logo">
             <Link to="/" onClick={toggleNavbarSmall}>
