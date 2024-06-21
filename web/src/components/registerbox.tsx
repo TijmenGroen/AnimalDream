@@ -68,7 +68,7 @@ function RegisterBox(): JSX.Element {
       return;
     }
 
-    if(password !== repeatPassword) {
+    if (password !== repeatPassword) {
       setPasswordColor("#cc0000");
       setRepeatPasswordColor("#cc0000");
       setAnnouncementMessage(
@@ -104,82 +104,83 @@ function RegisterBox(): JSX.Element {
 
   return (
     <div className="logInRegisterBox">
-      <div className="logInRegisterBody">
-        <div className="logInRegisterHead">Welkom</div>
-        <div className="logInRegisterContent">
-          <div className="logInRegisterCredentialField">
-            <input
-              type="text"
-              name="logInFirstName"
-              id="logInFirstName"
-              placeholder=""
-              style={{ borderColor: firstnameColor }}
-              onChange={(e: any) => setFirstname(e.target.value)}
-            />
-            <label htmlFor="logInFirstName">Voornaam</label>
+      <form
+        onSubmit={(e: any) => {
+          e.preventDefault();
+          handleRegister(firstname, lastname, mail, password);
+        }}
+      >
+        <div className="logInRegisterBody">
+          <div className="logInRegisterHead">Welkom</div>
+          <div className="logInRegisterContent">
+            <div className="logInRegisterCredentialField">
+              <input
+                type="text"
+                name="logInFirstName"
+                id="logInFirstName"
+                placeholder=""
+                style={{ borderColor: firstnameColor }}
+                onChange={(e: any) => setFirstname(e.target.value)}
+              />
+              <label htmlFor="logInFirstName">Voornaam</label>
+            </div>
+            <div className="logInRegisterCredentialField">
+              <input
+                type="text"
+                name="logInLastName"
+                id="logInLastName"
+                placeholder=""
+                style={{ borderColor: lastnameColor }}
+                onChange={(e: any) => setLastname(e.target.value)}
+              />
+              <label htmlFor="logInLastName">Achternaam</label>
+            </div>
+            <div className="logInRegisterCredentialField">
+              <input
+                type="text"
+                name="logInMail"
+                id="logInMail"
+                placeholder=""
+                style={{ borderColor: emailColor }}
+                onChange={(e: any) => setMail(e.target.value)}
+              />
+              <label htmlFor="logInMail">E-mail</label>
+            </div>
+            <div className="logInRegisterCredentialField">
+              <input
+                type="password"
+                name="logInPassword"
+                id="logInPassword"
+                placeholder=""
+                style={{ borderColor: passwordColor }}
+                onChange={(e: any) => setPassword(e.target.value)}
+              />
+              <label htmlFor="logInPassword">Wachtwoord</label>
+            </div>
+            <div className="logInRegisterCredentialField">
+              <input
+                type="password"
+                name="logInRepeat"
+                id="logInRepeat"
+                placeholder=""
+                style={{ borderColor: repeatPasswordColor }}
+                onChange={(e: any) => setRepeatPassword(e.target.value)}
+              />
+              <label htmlFor="logInRepeat">Herhaal wachtwoord</label>
+            </div>
           </div>
-          <div className="logInRegisterCredentialField">
-            <input
-              type="text"
-              name="logInLastName"
-              id="logInLastName"
-              placeholder=""
-              style={{ borderColor: lastnameColor }}
-              onChange={(e: any) => setLastname(e.target.value)}
-            />
-            <label htmlFor="logInLastName">Achternaam</label>
-          </div>
-          <div className="logInRegisterCredentialField">
-            <input
-              type="text"
-              name="logInMail"
-              id="logInMail"
-              placeholder=""
-              style={{ borderColor: emailColor }}
-              onChange={(e: any) => setMail(e.target.value)}
-            />
-            <label htmlFor="logInMail">E-mail</label>
-          </div>
-          <div className="logInRegisterCredentialField">
-            <input
-              type="password"
-              name="logInPassword"
-              id="logInPassword"
-              placeholder=""
-              style={{ borderColor: passwordColor }}
-              onChange={(e: any) => setPassword(e.target.value)}
-            />
-            <label htmlFor="logInPassword">Wachtwoord</label>
-          </div>
-          <div className="logInRegisterCredentialField">
-            <input
-              type="password"
-              name="logInRepeat"
-              id="logInRepeat"
-              placeholder=""
-              style={{ borderColor: repeatPasswordColor }}
-              onChange={(e: any) => setRepeatPassword(e.target.value)}
-            />
-            <label htmlFor="logInRepeat">Herhaal wachtwoord</label>
+          <div className="logInRegisterActionButtons">
+            <div className="announcement">{announcementMessage}</div>
+            <button type="submit">Maak account</button>
+            <p>
+              Al een account?{" "}
+              <Link to="/login">
+                <span className="logInRegisterLinks">Log in</span>
+              </Link>
+            </p>
           </div>
         </div>
-        <div className="logInRegisterActionButtons">
-          <div className="announcement">{announcementMessage}</div>
-          <button
-            onClick={() => {
-              handleRegister(firstname, lastname, mail, password);
-            }}
-          >
-            Maak account
-          </button>
-          <p>
-            Al een account?{" "}
-            <Link to="/login">
-              <span className="logInRegisterLinks">Log in</span>
-            </Link>
-          </p>
-        </div>
-      </div>
+      </form>
     </div>
   );
 }

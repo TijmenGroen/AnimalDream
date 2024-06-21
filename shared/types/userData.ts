@@ -5,15 +5,15 @@ export type userData = {
     phoneNumber: string;
     title: string;
 
-    city: string;
-    street: string;
-    houseNumber: string;
-    postalCode: string;
+    city: string[];
+    street: string[];
+    houseNumber: string[];
+    postalCode: string[];
 }
 
 export type addressData = {
-    city: string;
-    street: string;
-    houseNumber: string;
-    postalCode: string;
+    city: string[];
+    street: string[];
+    houseNumber: string[];
+    postalCode: string[];
 }

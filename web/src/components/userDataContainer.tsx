@@ -180,7 +180,7 @@ function UserDataContainer(): JSX.Element {
         <div className="userDataItemContainer" >
           <div style={{ display: "flex", flexDirection: "column", gap: "16px"}}>
             {address.map((e: addressData) => (
-              <div className="userDataItem" key={e.postalCode + e.houseNumber}>
+              <div className="userDataItem" key={e.postalCode[0] + e.houseNumber[0]}>
                 <div className="userDataItemHeader">
                   {e.street} {e.houseNumber}
                 </div>

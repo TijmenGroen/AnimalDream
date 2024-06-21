@@ -22,8 +22,8 @@ function LogInBox(): JSX.Element {
   const navigate: NavigateFunction = useNavigate();
 
   const handleLogIn: () => Promise<void> = async () => {
-    setEmailColor("")
-    setPasswordColor("")
+    setEmailColor("");
+    setPasswordColor("");
     if (email === "") setEmailColor("#cc0000");
     if (password === "") setPasswordColor("#cc0000");
     if (email === "" || password === "") {
@@ -34,16 +34,15 @@ function LogInBox(): JSX.Element {
           Vul alle velden in
         </div>
       );
-      return
+      return;
     }
     const user: boolean | userData = await userService.logIn({
       email: email,
       password: password,
     });
     if (user === true) {
-      navigate("/") 
-    }
-    else
+      navigate("/");
+    } else
       setAnnouncementMessage(
         <div>
           <CircleAlert style={{ transform: "translateY(4px)" }} />
@@ -55,55 +54,56 @@ function LogInBox(): JSX.Element {
 
   return (
     <div className="logInRegisterBox">
-      <div className="logInRegisterBody">
-        <div className="logInRegisterHead">Welkom terug</div>
-        <div className="logInRegisterContent">
-          <div className="logInRegisterCredentialField">
-            <input
-              type="text"
-              name="logInMailUserName"
-              id="logInMailUserName"
-              placeholder=""
-              style={{ borderColor: emailColor }}
-              onChange={(e: any) => setEmail(e.target.value)}
-            />
-            <label htmlFor="logInMailUserName">E-mail</label>
+      <form
+        onSubmit={async (e: any) => {
+          e.preventDefault();
+          handleLogIn();
+        }}
+      >
+        <div className="logInRegisterBody">
+          <div className="logInRegisterHead">Welkom terug</div>
+          <div className="logInRegisterContent">
+            <div className="logInRegisterCredentialField">
+              <input
+                type="text"
+                name="logInMailUserName"
+                id="logInMailUserName"
+                placeholder=""
+                style={{ borderColor: emailColor }}
+                onChange={(e: any) => setEmail(e.target.value)}
+              />
+              <label htmlFor="logInMailUserName">E-mail</label>
+            </div>
+            <div
+              className="logInRegisterCredentialField"
+              style={{ marginTop: "24px" }}
+            >
+              <input
+                type="password"
+                name="logInPassword"
+                id="logInPassword"
+                placeholder=""
+                style={{ borderColor: passwordColor }}
+                onChange={(e: any) => setPassword(e.target.value)}
+              />
+              <label htmlFor="logInPassword">Wachtwoord</label>
+            </div>
           </div>
-          <div
-            className="logInRegisterCredentialField"
-            style={{ marginTop: "24px" }}
-          >
-            <input
-              type="password"
-              name="logInPassword"
-              id="logInPassword"
-              placeholder=""
-              style={{ borderColor: passwordColor }}
-              onChange={(e: any) => setPassword(e.target.value)}
-            />
-            <label htmlFor="logInPassword">Wachtwoord</label>
+          <Link to="/forgotPassword" className="logInRegisterLinks">
+            Wachtwoord vergeten?
+          </Link>
+          <div className="logInRegisterActionButtons">
+            <div className="announcement">{announcementMessage}</div>
+            <button type="submit">Log In</button>
+            <p>
+              Nog geen account?{" "}
+              <Link to="/register">
+                <span className="logInRegisterLinks">Maak account</span>
+              </Link>
+            </p>
           </div>
         </div>
-        <Link to="/forgotPassword" className="logInRegisterLinks">
-          Wachtwoord vergeten?
-        </Link>
-        <div className="logInRegisterActionButtons">
-          <div className="announcement">{announcementMessage}</div>
-          <button
-            onClick={async () => {
-              handleLogIn();
-            }}
-          >
-            Log In
-          </button>
-          <p>
-            Nog geen account?{" "}
-            <Link to="/register">
-              <span className="logInRegisterLinks">Maak account</span>
-            </Link>
-          </p>
-        </div>
-      </div>
+      </form>
     </div>
   );
 }
