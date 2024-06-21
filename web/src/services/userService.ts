@@ -71,7 +71,7 @@ export class UserService {
     }
 
     // Uses authentication middleware
-    public async getUserData(): Promise<boolean | userData[]> {
+    public async getUserData(): Promise<boolean | userData> {
         const jwt: string | false = getCookie("jwt")
 
         const response: Response = await fetch(`${import.meta.env.VITE_API_URL}user/getUserData`, {

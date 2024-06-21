@@ -40,24 +40,24 @@ function UserDataContainer(): JSX.Element {
     const userService: UserService = new UserService();
     if (!userService) return;
     
-    const userData: userData[] = (await userService.getUserData()) as userData[];
+    const userData: userData = (await userService.getUserData()) as userData;
 
-    setUserFirstname(userData[0].firstname);
-    setUserLastname(userData[0].lastname);
-    setUserEmail(userData[0].email);
-    if (userData[0].phoneNumber) setUserPhoneNumber(userData[0].phoneNumber);
-    if (userData[0].title) setUserTitle(userData[0].title);
+    setUserFirstname(userData.firstname);
+    setUserLastname(userData.lastname);
+    setUserEmail(userData.email);
+    if (userData.phoneNumber) setUserPhoneNumber(userData.phoneNumber);
+    if (userData.title) setUserTitle(userData.title);
 
-    if (userData[0].postalCode)
-      for(let i: number = 0; i < userData.length; i++){
+    if (userData.postalCode)
+      for(let i: number = 0; i < userData.postalCode.length; i++){
       // eslint-disable-next-line @typescript-eslint/typedef
       setAddress((oldArray) => [
         ...oldArray,
         {
-          city: userData[i].city,
-          street: userData[i].street,
-          houseNumber: userData[i].houseNumber,
-          postalCode: userData[i].postalCode,
+          city: userData.city[i],
+          street: userData.street[i],
+          houseNumber: userData.houseNumber[i],
+          postalCode: userData.postalCode[i],
         },
       ]);
     }

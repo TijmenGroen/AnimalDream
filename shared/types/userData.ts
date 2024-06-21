@@ -12,8 +12,8 @@ export type userData = {
 }
 
 export type addressData = {
-    city: string[];
-    street: string[];
-    houseNumber: string[];
-    postalCode: string[];
+    city: string;
+    street: string;
+    houseNumber: string;
+    postalCode: string;
 }
