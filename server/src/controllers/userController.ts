@@ -84,7 +84,7 @@ export class UserController {
         try{
             const result: userData[] = await queryDatabase(connection,
                 `
-                SELECT u.firstname, u.lastname, u.email, u.phoneNumber, u.title, 
+                SELECT DISTINCT u.firstname, u.lastname, u.email, u.phoneNumber, u.title, 
                 JSON_ARRAYAGG(a.city) as city, 
                 JSON_ARRAYAGG(a.street) as street, 
                 JSON_ARRAYAGG(a.houseNumber) as houseNumber, 
