@@ -36,6 +36,7 @@ function UserDataContainer(): JSX.Element {
   }, [modalBoxDisplay]);
 
   async function fetchData(): Promise<void> {
+    setAddress([])
     const userService: UserService = new UserService();
     if (!userService) return;
     
