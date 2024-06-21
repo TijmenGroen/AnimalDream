@@ -96,7 +96,6 @@ export class UserController {
                 `,
                 [token.id]
             )
-            console.log(result)
             res.status(200).json(result)
         }
         catch(err){
