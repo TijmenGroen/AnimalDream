@@ -17,4 +17,18 @@ export class ProductService {
         }
         return (await response.json()) as Product[];
     }
+
+    public async getProductsDataById(productIds: number[]): Promise<Product[]> {
+        const response: Response = await fetch(`${import.meta.env.VITE_API_URL}products/getById`, {
+            method: "post",
+            headers: headers,
+            body: JSON.stringify({ids: productIds})
+        });
+
+        if(!response.ok){
+            console.error(response)
+            return <Product[]>{}
+        }
+        return (await response.json()) as Product[];
+    }
 }

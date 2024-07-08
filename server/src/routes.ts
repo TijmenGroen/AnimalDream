@@ -11,6 +11,7 @@ router.use(cookieParser())
 
 const productController: ProductController = new ProductController();
 router.get("/products/getAll", (req: Request, res: Response) => productController.getProducts(req, res));
+router.post("/products/getById", (req: Request, res: Response) => productController.getProductDataByIds(req, res));
 
 const userController: UserController = new UserController();
 router.post("/user/register", (req: Request, res: Response) => userController.register(req, res));

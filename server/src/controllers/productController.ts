@@ -11,8 +11,7 @@ export class ProductController {
                 `
                SELECT *
                FROM product
-                `,
-                []
+                `
             )
             connection.release();
             res.status(200).json(this.pushProductsToArray(result));
@@ -34,5 +33,26 @@ export class ProductController {
             })
         }
         return ProductsArray
+    }
+
+    public async getProductDataByIds(req: Request, res: Response): Promise<void> {
+        const connection: PoolConnection = await getConnection()
+        try{
+            const result: Product[] = await queryDatabase(connection,
+                `
+               SELECT productName, productDescription, productPrice
+               FROM product
+               WHERE productId IN ?
+                `,
+                [req.body.ids]
+            )
+            connection.release();
+            res.status(200).json(result);
+        }
+        catch(err){
+            res.sendStatus(400);
+            connection.release()
+            throw err;
+        }
     }
 }

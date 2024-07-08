@@ -1,19 +1,44 @@
 import "../css/cart.css";
 import CartItem from "../components/cartItem";
+import { useState, useEffect } from "react";
+import { ProductService } from "../services/productService";
 
-function CartPage(): JSX.Element {
+function CartPage(): JSX.Element { 
+    // eslint-disable-next-line @typescript-eslint/typedef
+    const [product, setProduct] = useState<any>({});
+    // eslint-disable-next-line @typescript-eslint/typedef
+    const [loading, setLoading] = useState<boolean>(true);
+    
+    useEffect(() => {
+      const items: number[] = [1, 2, 3]
+    const getProductData: any = async (): Promise<void> => {
+      try{
+        const productService: ProductService = new ProductService();
+        setProduct(await productService.getProductsDataById(items));
+      }
+      catch(err){
+        // do nothing
+      }
+      finally{
+        setLoading(false)
+      }
+    }
+
+    getProductData();
+  }, []);
+  
+  if(loading) {
+    return <div>Loading...</div>;
+  }
+
     return (
       <div className="cartPage">
         <div className="cartItemsBox">
-            <CartItem />
+            <CartItem name={product[0].productName} price={product[0].productPrice} />
             <hr />
-            <CartItem />
+            <CartItem name={product[1].productName} price={product[0].productPrice} />
             <hr />
-            <CartItem />
-            <hr />
-            <CartItem />
-            <hr />
-            <CartItem />
+            <CartItem name={product[2].productName} price={product[2].productPrice} />
             <hr />
         </div>
         <div className="cartTotalBox">
