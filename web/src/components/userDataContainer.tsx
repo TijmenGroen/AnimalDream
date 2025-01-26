@@ -36,10 +36,10 @@ function UserDataContainer(): JSX.Element {
   }, [modalBoxDisplay]);
 
   async function fetchData(): Promise<void> {
-    setAddress([])
+    setAddress([]);
     const userService: UserService = new UserService();
     if (!userService) return;
-    
+
     const userData: userData = (await userService.getUserData()) as userData;
 
     setUserFirstname(userData.firstname);
@@ -49,18 +49,18 @@ function UserDataContainer(): JSX.Element {
     if (userData.title) setUserTitle(userData.title);
 
     if (userData.postalCode)
-      for(let i: number = 0; i < userData.postalCode.length; i++){
-      // eslint-disable-next-line @typescript-eslint/typedef
-      setAddress((oldArray) => [
-        ...oldArray,
-        {
-          city: userData.city[i],
-          street: userData.street[i],
-          houseNumber: userData.houseNumber[i],
-          postalCode: userData.postalCode[i],
-        },
-      ]);
-    }
+      for (let i: number = 0; i < userData.postalCode.length; i++) {
+        // eslint-disable-next-line @typescript-eslint/typedef
+        setAddress((oldArray) => [
+          ...oldArray,
+          {
+            city: userData.city[i],
+            street: userData.street[i],
+            houseNumber: userData.houseNumber[i],
+            postalCode: userData.postalCode[i],
+          },
+        ]);
+      }
   }
 
   async function submitAddress(): Promise<void> {
@@ -177,21 +177,32 @@ function UserDataContainer(): JSX.Element {
           </div>
         </div>
         <hr />
-        <div className="userDataItemContainer" >
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px"}}>
-            {address.map((e: addressData) => (
-              <div className="userDataItem" key={e.postalCode[0] + e.houseNumber[0]}>
-                <div className="userDataItemHeader">
-                  {e.street} {e.houseNumber}
+        <div className="userDataItemContainer">
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+          >
+            {address.length > 0 ? (
+              address.map((e: addressData) => (
+                <div
+                  className="userDataItem"
+                  key={`${e.postalCode}-${e.houseNumber}`}
+                >
+                  <div className="userDataItemHeader">
+                    {e.street} {e.houseNumber}
+                  </div>
+                  <div className="userDataItemContent">
+                    {e.city} - {e.postalCode}
+                  </div>
                 </div>
-                <div className="userDataItemContent">
-                  {e.city} - {e.postalCode}
-                </div>
+              ))
+            ) : (
+              <div className="userDataItemContent">
+                Geen adressen beschikbaar
               </div>
-            ))}
-            </div>
+            )}
+          </div>
           <div className="userDataButtonHolder">
-            <button onClick={toggleModalBox}>Adres toevoegen</button> 
+            <button onClick={toggleModalBox}>Adres toevoegen</button>
           </div>
         </div>
       </div>
@@ -200,4 +211,3 @@ function UserDataContainer(): JSX.Element {
 }
 
 export default UserDataContainer;
-
